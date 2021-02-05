@@ -4,28 +4,15 @@ const graphqlHttp = require("express-graphql").graphqlHTTP; // import graphql to
 const { buildSchema } = require("graphql"); // import the function to build our schema
 const mongoose = require("mongoose"); // impor the mongoose drivers
 const Blog = require("./models/blog");
-var cors = require("cors");
+const cors = require("cors");
 
 const app = express(); // create express server
 
-var whitelist = ["http://localhost:3000", "http://localhost:5000/graphql"];
-var corsOptions = {
-  origin: function (origin, callback) {
-    if (whitelist.indexOf(origin) !== -1) {
-      callback(null, true);
-    } else {
-      callback(new Error("Not allowed by CORS"));
-    }
-  },
-};
-
 app.use(bodyParser.json()); // use body-parser middleware to parse incoming json
-
+app.options("*", cors());
 app.use(
   "/graphql",
   graphqlHttp({
-    // set up our graphql endpoint with the express-graphql middleware
-    // build a graphql schema
     schema: buildSchema(`
         type Blog {
             _id: ID!
@@ -58,7 +45,6 @@ app.use(
     `),
     rootValue: {
       blogs: () => {
-        // return all the blogs unfiltered using Model
         return Blog.find()
           .then((blogs) => {
             return blogs;
@@ -75,7 +61,6 @@ app.use(
           date: args.blogInput.date,
         });
 
-        // save new blog using model which will save in MongoDB
         return blog
           .save()
           .then((result) => {
@@ -87,16 +72,27 @@ app.use(
             throw err;
           });
       },
-    }, // an object with resolver functions
-    graphiql: true, // enable the graphiql interface to test our queries
+    },
+    graphiql: true,
   })
 );
 
-app.get("/graphql", cors(corsOptions), function () {
-  console.log("On the graphql location");
+var allowlist = ["http://localhost:3000", "http://localhost:5000/graphql"];
+var corsOptionsDelegate = function (req, callback) {
+  var corsOptions;
+  if (allowlist.indexOf(req.header("Origin")) !== -1) {
+    corsOptions = { origin: true }; // reflect (enable) the requested origin in the CORS response
+  } else {
+    corsOptions = { origin: false }; // disable CORS for this request
+  }
+  callback(null, corsOptions); // callback expects two parameters: error and options
+};
+
+app.get("/graphql", function (req, res, next) {
+  console.log("Graphql path");
 });
 
-// connect to our MongoDB server.
+app.use(cors(corsOptionsDelegate));
 mongoose
   .connect(
     "mongodb+srv://sevagen:V130499100084G@cluster0.q4vjy.mongodb.net/blogs?retryWrites=true&w=majority",
@@ -105,7 +101,7 @@ mongoose
   .then(() => {
     app.listen(5000, () => {
       console.log("Connected to db and server running at 5000");
-    }); // setup server to run on port 5000
+    });
   })
   .catch((err) => {
     console.log(err);
