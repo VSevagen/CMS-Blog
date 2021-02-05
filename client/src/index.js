@@ -3,25 +3,6 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import { ApolloProvider, ApolloClient, InMemoryCache } from "@apollo/client";
-import { gql } from "@apollo/client";
-
-const client = new ApolloClient({
-  uri: "https://localhost:5000/graphql",
-  cache: new InMemoryCache(),
-});
-
-client
-  .query({
-    query: gql`
-      query blogs {
-        title
-        description
-        id
-      }
-    `,
-  })
-  .then((result) => console.log(result));
 
 ReactDOM.render(
   <React.StrictMode>
