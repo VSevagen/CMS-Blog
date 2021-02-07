@@ -7,9 +7,9 @@ const Blog = require("./models/blog");
 const cors = require("cors");
 
 const app = express(); // create express server
-
-app.use(bodyParser.json()); // use body-parser middleware to parse incoming json
 app.options("*", cors());
+app.use(bodyParser.json()); // use body-parser middleware to parse incoming json
+
 app.use(
   "/graphql",
   graphqlHttp({
@@ -77,7 +77,7 @@ app.use(
   })
 );
 
-var allowlist = ["http://localhost:3000", "http://localhost:5000/graphql"];
+var allowlist = ["http://localhost:3000"];
 var corsOptionsDelegate = function (req, callback) {
   var corsOptions;
   if (allowlist.indexOf(req.header("Origin")) !== -1) {
