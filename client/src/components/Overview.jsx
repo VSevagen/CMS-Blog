@@ -1,0 +1,45 @@
+import React from "react"
+import "../styles/main.css"
+import Footer from "./Footer"
+import Header from "./Header"
+import { gql, useQuery } from '@apollo/client';
+
+const GET_BLOG_DETAILS = gql`
+    query blogs {
+        blogs {
+            title
+            description
+            date
+        }
+    }
+
+`;
+
+function Overview() {
+
+    const {loading, error, data} = useQuery(GET_BLOG_DETAILS);
+    if(loading) return 'Loading...';
+    if(error) return `Error! ${error.message}`;
+
+    return(
+        <div>
+            <Header />
+            <div className="post-list">
+                <ul>
+                    {data.blogs.map(blog => (
+                        <li>
+                            <a id="blog-title" href="/">{blog.title}</a>
+                            <h4>{blog.description}</h4>
+
+                            <p>{new Date(blog.date).toDateString()}</p>
+                            {console.log(new Date(blog.date).toDateString())}
+                        </li>
+                    ))}
+                </ul>
+            </div>
+            <Footer />
+        </div>
+    );
+}
+
+export default Overview;
