@@ -1,0 +1,150 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono&family=Vidaloka&display=swap");
+
+.header {
+  max-width: 740px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-right: 30px;
+  padding-left: 20px;
+}
+
+body {
+  background-color: white;
+}
+
+.site-title {
+  font-family: "Roboto Mono", monospace;
+  font-size: 22px;
+  line-height: 54px;
+  letter-spacing: -1px;
+  color: #444;
+}
+
+.site-options {
+  float: right;
+  font-size: 15px;
+}
+
+a {
+  color: #9c9c9c;
+  margin-left: 10px;
+}
+
+#title {
+  margin-left: 0;
+}
+
+#title:hover {
+  color: white;
+  background-color: black;
+  text-decoration: none;
+}
+
+#about:hover {
+  color: white;
+  background-color: black;
+  text-decoration: none;
+}
+
+.post-list {
+  max-width: 740px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 23px;
+}
+
+ul {
+  padding-inline-start: 15px;
+  padding-inline-end: 15px;
+}
+
+.post-list li {
+  padding-top: 5px;
+  padding-bottom: 16px;
+  display: block;
+}
+
+li #blog-title {
+  font-family: "Vidaloka", serif;
+  color: #333;
+  text-decoration: none;
+  font-size: 22.4px;
+  margin-left: 0;
+  margin-bottom: 0.5rem;
+}
+
+#blog-title:hover {
+  color: white;
+  background-color: black;
+}
+
+li p {
+  font-size: 11px;
+  color: #333;
+  opacity: 0.6;
+  padding: 0;
+}
+
+li h4 {
+  font-size: 15px;
+  color: #333;
+  opacity: 0.9;
+  line-height: 20px;
+}
+
+.separator {
+  height: 0;
+  margin: 0.5 rem 0;
+  /* overflow: hidden; */
+  border-top: 1px solid #e9ecef;
+}
+
+.bottom-separator {
+  height: 0;
+  margin: 0.5 rem 0;
+  border-top: 1px solid #e9ecef;
+  margin-top: 105px;
+  max-width: 100%;
+}
+
+.footer {
+  max-width: 740px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.links {
+  width: 30px;
+  height: auto;
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-top: 20px;
+}
+
+.link-holder {
+  margin-left: 20%;
+  margin-right: 20%;
+}
+
+.copyright {
+  font-size: 10px;
+  margin-left: 38%;
+  margin-right: 38%;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.project-link {
+  margin-left: 0;
+  text-decoration: none;
+}
+
+.project-link:hover {
+  text-decoration: none;
+  color: white;
+  background-color: black;
+}
+
+#mode-style {
+  width: 30px;
+}
