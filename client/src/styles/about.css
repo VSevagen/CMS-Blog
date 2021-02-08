@@ -1,0 +1,15 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono&family=Vidaloka&display=swap");
+
+p {
+  font-family: "Roboto Mono", monospace;
+  letter-spacing: -1px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.layout {
+  max-width: 740px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 40px;
+}
