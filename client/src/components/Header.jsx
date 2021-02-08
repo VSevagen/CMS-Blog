@@ -1,4 +1,5 @@
 import React from "react"
+import { Link } from "react-router-dom";
 
 import DarkMode from "../public/dark-mode.png"
 import LightMode from "../public/light-mode.png";
@@ -51,7 +52,8 @@ function handleClick(e) {
     }
 }
 
-export default function Header() {
+
+function Header() {
     return (
         <div>
             <div class="header">
@@ -61,8 +63,8 @@ export default function Header() {
                         <i>
                         <img id="mode-style" src={DarkMode} alt="" onClick={handleClick} onKeyDown={handleClick}></img>
                         </i>
-                        <a id="about" href="/project">Projects</a>
-                        <a id="about" href="/about">About</a>
+                        <Link to="/projects">Projects</Link>
+                        <Link to="/about">About</Link>
                     </div>
                 </div>
             </div>
@@ -71,3 +73,5 @@ export default function Header() {
         </div>
     );
 }
+
+export default Header;

@@ -4,6 +4,9 @@ import { InMemoryCache, gql } from "apollo-boost";
 import ApolloClient from "apollo-boost";
 import { ApolloProvider } from "@apollo/client";
 import Overview from "./components/Overview";
+import About from "./components/About";
+import Projects from "./components/Projects";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 /** Simple app that just shows the LightsOut game. */
 const client = new ApolloClient({
@@ -32,7 +35,12 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <div className="App">
-        <Overview />
+        <Switch>
+          <Route path="/" component={Overview} exact />
+          <Route path="/about" component={About} />
+          <Route path="/projects" component={Projects} />
+          <Route component={Error} />
+        </Switch>
       </div>
     </ApolloProvider>
   );
