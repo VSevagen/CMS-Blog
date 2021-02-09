@@ -2,27 +2,51 @@ import React from "react"
 import "../styles/about.css"
 import Footer from "./Footer"
 import Header from "./Header"
+import { gql, useQuery } from '@apollo/client';
+
+const GET_ABOUT_DETAILS = gql`
+    query blogs {
+        about {
+            name
+            desc
+            email
+            skills
+        }
+    }
+
+`;
+
 
 function About()  {
+
+    const {loading, error, data} = useQuery(GET_ABOUT_DETAILS);
+    if(loading) return 'Loading...';
+    if(error) return `Error! ${error.message}`;
+
     return (
         <div class="about">
             <Header />
 
+            {data.about.map(about => (
             <div class="layout">
                 <p>Hi there ! <br></br>
-                My name is <strong>Veerasamy Sevagen</strong>. I'm currently a student at Amrita Vishwa Vidyapeetham in the State of Kerala, India, pursuing a B-Tech degree in Computer Science and Engineering .I'm an open-source enthusiast and also part of FOSS@Amrita, which is a club driven by Amrita Students dedicated to open-source softwares, contribution drives and Hackathons.</p>
+                My name is <strong>{about.name}</strong>. {about.desc}</p>
 
                 <p class="text-center">-----------------------------------------------------------------------------</p>
                 <p>
                     <span>Things I've meddled with :</span><br></br><br></br>
-                    <span>- Web Development (MEAN Stack)</span><br></br>
-                    <span>- The GNOME Project</span><br></br>
+                    {about.skills.map(skill =>(
+                        <div>
+                        <span>- {skill}</span><br></br>
+                        </div>
+                    ))}
                 </p>
                 <p class="text-center">-----------------------------------------------------------------------------</p>
                 <p class="center-tag">Contact</p>
-                <p>Email: sevagenv@gmail.com 0R sevagen@gnome.org</p>
+                <p>Email: {about.email}</p>
 
             </div>
+            ))}
 
             <Footer />
         </div>
