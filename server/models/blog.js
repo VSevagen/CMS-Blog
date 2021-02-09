@@ -20,6 +20,10 @@ const blogSchema = new Schema({
     type: Date,
     required: true,
   },
+  component: {
+    type: String,
+    required: true,
+  },
 });
 
 module.exports = mongoose.model("Blog", blogSchema);
