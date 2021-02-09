@@ -6,6 +6,7 @@ import { ApolloProvider } from "@apollo/client";
 import Overview from "./components/Overview";
 import About from "./components/About";
 import Projects from "./components/Projects";
+import BlogFormat from "./components/BlogFormat";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 /** Simple app that just shows the LightsOut game. */
@@ -39,6 +40,20 @@ function App() {
           <Route path="/" component={Overview} exact />
           <Route path="/about" component={About} />
           <Route path="/projects" component={Projects} />
+          <Route path="/GNOMEAsia2019" component={BlogFormat} />
+          <Route path="/SchoolVisit" component={BlogFormat} />
+          <Route path="/IncubateINDHackathon,Kochi" component={BlogFormat} />
+          <Route
+            path="/ERROR2002HY000Can'tconnecttoMySQLserver"
+            component={BlogFormat}
+          />
+          <Route path="/MyFirstFossTalk!!!" component={BlogFormat} />
+          <Route path="/Part1:HowtoinstallMediaWiki" component={BlogFormat} />
+          <Route
+            path="/Pythonasthefirstprogramminglangaugetolearn"
+            component={BlogFormat}
+          />
+          <Route path="/MyFirstFossTalk!!!" component={BlogFormat} />
           <Route component={Error} />
         </Switch>
       </div>
