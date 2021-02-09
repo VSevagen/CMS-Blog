@@ -3,6 +3,7 @@ import "../styles/main.css"
 import Footer from "./Footer"
 import Header from "./Header"
 import { gql, useQuery } from '@apollo/client';
+import { Link } from "react-router-dom";
 
 const GET_BLOG_DETAILS = gql`
     query blogs {
@@ -10,6 +11,8 @@ const GET_BLOG_DETAILS = gql`
             title
             description
             date
+            text
+            component
         }
     }
 
@@ -28,11 +31,19 @@ function Overview() {
                 <ul>
                     {data.blogs.map(blog => (
                         <li>
-                            <a id="blog-title" href="/">{blog.title}</a>
+                            {/* <a id="blog-title" href={blog.title}>{blog.title}</a> blog.title.replace(/\s+/g, ''),*/}
+                            <Link id="blog-title" to={{
+                                pathname: blog.title.replace(/[\s()]+/g, ''),
+                                aboutProps: {
+                                    title: blog.title,
+                                    date: blog.date,
+                                    text: blog.text,
+                                    component: blog.component
+                                }
+                            }}>{blog.title}</Link>
                             <h4>{blog.description}</h4>
 
-                            <p>{new Date(blog.date).toDateString()}</p>
-                            {console.log(new Date(blog.date).toDateString())}
+                            <p>{blog.date}</p>
                         </li>
                     ))}
                 </ul>
