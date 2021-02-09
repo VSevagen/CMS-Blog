@@ -4,6 +4,7 @@ const graphqlHttp = require("express-graphql").graphqlHTTP; // import graphql to
 const { buildSchema } = require("graphql"); // import the function to build our schema
 const mongoose = require("mongoose"); // impor the mongoose drivers
 const Blog = require("./models/blog");
+const About = require("./models/about");
 const cors = require("cors");
 
 const app = express(); // create express server
@@ -20,6 +21,15 @@ app.use(
             text: String!
             description: String!
             date: String!
+            component: String!
+        }
+
+        type About {
+          _id: ID!
+          name: String!
+          desc: String!
+          email: String!
+          skills: [String!]
         }
 
         input BlogInput {
@@ -27,15 +37,25 @@ app.use(
             text: String!
             description: String!
             date: String!
+            component: String!
+        }
+
+        input AboutInput {
+          name: String!
+          desc: String!
+          email: String!
+          skills: [String!]
         }
 
 
         type blogQuery {
             blogs: [Blog!]!
+            about: [About!]!
         }
 
         type blogMutation {
             createBlog(blogInput: BlogInput): Blog
+            createAbout(aboutInput: AboutInput): About
         }
 
         schema {
@@ -53,15 +73,47 @@ app.use(
             throw err;
           });
       },
+
+      about: () => {
+        return About.find()
+          .then((about) => {
+            return about;
+          })
+          .catch((err) => {
+            throw err;
+          });
+      },
+
       createBlog: (args) => {
         const blog = new Blog({
           title: args.blogInput.title,
           text: args.blogInput.text,
           description: args.blogInput.description,
           date: args.blogInput.date,
+          component: args.blogInput.component,
         });
 
         return blog
+          .save()
+          .then((result) => {
+            console.log(result);
+            return result;
+          })
+          .catch((err) => {
+            console.log(err);
+            throw err;
+          });
+      },
+
+      createAbout: (args) => {
+        const about = new About({
+          name: args.aboutInput.name,
+          desc: args.aboutInput.desc,
+          email: args.aboutInput.email,
+          skills: args.aboutInput.skills,
+        });
+
+        return about
           .save()
           .then((result) => {
             console.log(result);
