@@ -1,0 +1,59 @@
+@import url("https://fonts.googleapis.com/css2?family=Amiri&display=swap");
+
+.blog-title {
+  font-size: 36px;
+  font-family: "Vidaloka", serif;
+}
+
+.blog-date {
+  font-size: 11px;
+  color: #333;
+  opacity: 0.6;
+  padding: 0;
+}
+
+.blog-content {
+  font-size: 1.2rem;
+  color: #111;
+  opacity: 1;
+  font-family: "Amiri", serif;
+  margin-top: 15px;
+  letter-spacing: 0;
+  line-height: 25px;
+}
+
+#special {
+  padding-bottom: 5px;
+  padding-top: 5px;
+}
+
+.blog_img {
+  width: 70%;
+  height: auto;
+  margin-left: 15%;
+  margin-right: 15%;
+}
+
+.custom {
+  width: 30%;
+  margin-left: 35%;
+  margin-right: 35%;
+}
+
+.custom-text {
+  color: black;
+  opacity: 1;
+  margin-left: 36%;
+  margin-right: 36%;
+  line-height: 15px;
+}
+
+#unique {
+  width: 50%;
+  margin-left: 25%;
+  margin-right: 35%;
+}
+
+#unecessary {
+  display: none;
+}
