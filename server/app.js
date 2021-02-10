@@ -5,6 +5,7 @@ const { buildSchema } = require("graphql"); // import the function to build our 
 const mongoose = require("mongoose"); // impor the mongoose drivers
 const Blog = require("./models/blog");
 const About = require("./models/about");
+const Project = require("./models/project");
 const cors = require("cors");
 
 const app = express(); // create express server
@@ -32,6 +33,14 @@ app.use(
           skills: [String!]
         }
 
+        type Project {
+          _id: ID!
+          title: String!
+          desc: String!
+          link: String!
+          demolink: String!
+        }
+
         input BlogInput {
             title: String!
             text: String!
@@ -47,15 +56,23 @@ app.use(
           skills: [String!]
         }
 
+        input ProjectInput {
+          title: String!
+          desc: String!
+          link: String!
+          demolink: String!
+        }
 
         type blogQuery {
             blogs: [Blog!]!
             about: [About!]!
+            projects: [Project!]!
         }
 
         type blogMutation {
             createBlog(blogInput: BlogInput): Blog
             createAbout(aboutInput: AboutInput): About
+            createProject(projectInput: ProjectInput): Project
         }
 
         schema {
@@ -84,6 +101,16 @@ app.use(
           });
       },
 
+      projects: () => {
+        return Project.find()
+          .then((projects) => {
+            return projects;
+          })
+          .catch((err) => {
+            throw err;
+          });
+      },
+
       createBlog: (args) => {
         const blog = new Blog({
           title: args.blogInput.title,
@@ -94,6 +121,26 @@ app.use(
         });
 
         return blog
+          .save()
+          .then((result) => {
+            console.log(result);
+            return result;
+          })
+          .catch((err) => {
+            console.log(err);
+            throw err;
+          });
+      },
+
+      createProject: (args) => {
+        const project = new Project({
+          title: args.projectInput.title,
+          desc: args.projectInput.desc,
+          link: args.projectInput.link,
+          demolink: args.projectInput.demolink,
+        });
+
+        return project
           .save()
           .then((result) => {
             console.log(result);
