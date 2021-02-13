@@ -3,6 +3,7 @@ import "../styles/main.css"
 import Twitter from "../public/twitter.png"
 import Linkedin from "../public/linkedin.png"
 import Gitlab from "../public/gitlab.png"
+import Github from "../public/github.svg"
 
 export default function Footer() {
     return (
@@ -13,7 +14,7 @@ export default function Footer() {
             <div class="footer">
 
                 <div class="link-holder text-center">
-                    <a href="https://gitlab.gnome.org/Sevagen" target="_blank" rel="noopener noreferrer"><img class="links" src={Gitlab} alt=""></img></a>
+                    <a href="https://github.com/VSevagen" target="_blank" rel="noopener noreferrer"><img class="links" src={Github} alt=""></img></a>
                     <a href="https://twitter.com/SevagenV" target="_blank" rel="noopener noreferrer"><img class="links" src={Twitter} alt=""></img></a>
                     <a href="https://www.linkedin.com/in/veerasamy-sevagen/" target="_blank" rel="noopener noreferrer"><img class="links" src={Linkedin} alt=""></img></a>
                 </div>
