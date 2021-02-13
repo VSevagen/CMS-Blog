@@ -1,8 +1,10 @@
 import React from "react"
 import "../styles/about.css"
+import "../styles/main.css"
 import Footer from "./Footer"
 import Header from "./Header"
 import { gql, useQuery } from '@apollo/client';
+import Loader from "react-loader-spinner";
 
 const GET_ABOUT_DETAILS = gql`
     query blogs {
@@ -20,7 +22,7 @@ const GET_ABOUT_DETAILS = gql`
 function About()  {
 
     const {loading, error, data} = useQuery(GET_ABOUT_DETAILS);
-    if(loading) return 'Loading...';
+    if(loading) return <div className="spinner"><Loader type="Grid" color="#9c9c9c" height={80} width={80}/></div>;
     if(error) return `Error! ${error.message}`;
 
     return (

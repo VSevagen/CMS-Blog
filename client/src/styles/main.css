@@ -12,6 +12,14 @@ body {
   background-color: white;
 }
 
+.spinner {
+  position: absolute;
+  margin-left: 47%;
+  margin-right: 47%;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
 .site-title {
   font-family: "Roboto Mono", monospace;
   font-size: 22px;
@@ -118,18 +126,22 @@ li h4 {
   height: auto;
   margin-left: 5%;
   margin-right: 5%;
-  margin-top: 20px;
+  margin-top: 25px;
 }
 
 .link-holder {
-  margin-left: 20%;
-  margin-right: 20%;
+  /* margin-left: 25%;
+  margin-right: 25%; */
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 
 .copyright {
   font-size: 10px;
-  margin-left: 38%;
-  margin-right: 38%;
+  /* margin-left: 25%;
+  margin-right: 25%; */
+  text-align: center;
   margin-top: 20px;
   margin-bottom: 20px;
 }
