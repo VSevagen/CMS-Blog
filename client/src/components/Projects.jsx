@@ -28,7 +28,7 @@ function Projects(){
                 <ul>
                     {data.projects.map(project => (
                         <li>
-                           <a id="blog-title" href="/project">{project.title}</a>
+                           <h2 id="blog-title">{project.title}</h2>
                         <h4>
                             {project.desc}
                         </h4>
