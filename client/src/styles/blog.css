@@ -7,14 +7,14 @@
 
 .blog-date {
   font-size: 11px;
-  color: #333;
+  /* color: #333; */
   opacity: 0.6;
   padding: 0;
 }
 
 .blog-content {
   font-size: 1.2rem;
-  color: #111;
+  /* color: #111; */
   opacity: 1;
   font-family: "Amiri", serif;
   margin-top: 15px;

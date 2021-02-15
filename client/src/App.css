@@ -1,5 +1,24 @@
+html {
+  --primaryBackgroundColor: white;
+  --primaryTextColor: #525252;
+}
+
+html.dark {
+  --primaryBackgroundColor: #525252;
+  --primaryTextColor: white;
+}
+
+@media (prefers-color-scheme: dark) {
+  html {
+    --primaryBackgroundColor: #525252;
+    --primaryTextColor: white;
+  }
+}
+
 .App {
   /* text-align: center; */
+  background-color: var(--primaryBackgroundColor);
+  color: var(--primaryTextColor);
 }
 
 .App-logo {

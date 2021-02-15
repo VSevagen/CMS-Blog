@@ -74,7 +74,7 @@ ul {
 
 li #blog-title {
   font-family: "Vidaloka", serif;
-  color: #333;
+  /* color: #333; */
   text-decoration: none;
   font-size: 22.4px;
   margin-left: 0;
@@ -88,14 +88,14 @@ li #blog-title {
 
 li p {
   font-size: 11px;
-  color: #333;
+  /* color: #333; */
   opacity: 0.6;
   padding: 0;
 }
 
 li h4 {
   font-size: 15px;
-  color: #333;
+  /* color: #333; */
   opacity: 0.9;
   line-height: 20px;
 }
