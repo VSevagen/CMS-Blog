@@ -9,7 +9,6 @@ import Projects from "./components/Projects";
 import Admin from "./components/Admin";
 import BlogFormat from "./components/BlogFormat";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import DarkToggle from "./components/DarkToggle";
 
 /** Simple app that just shows the LightsOut game. */
 const client = new ApolloClient({
@@ -38,7 +37,6 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <div className="App">
-        <DarkToggle />
         <Switch>
           <Route path="/" component={Overview} exact />
           <Route path="/about" component={About} />

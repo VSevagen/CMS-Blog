@@ -20,6 +20,11 @@ body {
   transform: translateY(-50%);
 }
 
+.switch {
+  float: right;
+  margin-top: 12px;
+}
+
 .site-title {
   font-family: "Roboto Mono", monospace;
   font-size: 22px;
@@ -31,11 +36,13 @@ body {
 .site-options {
   float: right;
   font-size: 15px;
+  margin-bottom: 5px;
 }
 
 a {
   color: #9c9c9c;
   margin-left: 10px;
+  margin-right: 5px;
 }
 
 #title {

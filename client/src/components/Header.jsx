@@ -1,6 +1,6 @@
 import React from "react"; 
 import { Link } from "react-router-dom";
-
+import DarkToggle from "./DarkToggle";
 
 function Header() {
     return (
@@ -8,6 +8,7 @@ function Header() {
             <div class="header">
                 <div class="site-title">
                     <a id="title" href="/">My Blog</a>
+                    <DarkToggle />
                     <div class="site-options">
                         <Link to="/projects">Projects</Link>
                         <Link to="/about">About</Link>
