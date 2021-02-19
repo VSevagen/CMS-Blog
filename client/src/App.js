@@ -8,7 +8,13 @@ import About from "./components/About";
 import Projects from "./components/Projects";
 import Admin from "./components/Admin";
 import BlogFormat from "./components/BlogFormat";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import Login from "./components/Login";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+} from "react-router-dom";
 
 /** Simple app that just shows the LightsOut game. */
 const client = new ApolloClient({
@@ -20,28 +26,14 @@ const client = new ApolloClient({
   },
 });
 
-// client
-//   .query({
-//     query: gql`
-//       query blogs {
-//         blogs {
-//           title
-//           text
-//         }
-//       }
-//     `,
-//   })
-//   .then((result) => console.log(result.data.blogs[0].title));
-
 function App() {
   return (
     <ApolloProvider client={client}>
       <div className="App">
         <Switch>
-          <Route path="/" component={Overview} exact />
           <Route path="/about" component={About} />
           <Route path="/projects" component={Projects} />
-          <Route path="/admin" component={Admin} />
+          <Route path="/login" component={Login} />
           <Route path="/GNOMEAsia2019" component={BlogFormat} />
           <Route path="/SchoolVisit" component={BlogFormat} />
           <Route path="/IncubateINDHackathon,Kochi" component={BlogFormat} />
@@ -56,6 +48,8 @@ function App() {
             component={BlogFormat}
           />
           <Route path="/MyFirstFossTalk!!!" component={BlogFormat} />
+          <Route path="/" component={Overview} exact />
+          <Route path="/admin" component={Admin} />
           <Route component={Error} />
         </Switch>
       </div>
