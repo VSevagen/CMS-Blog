@@ -3,6 +3,15 @@
 import React, { useState } from 'react';
 import { Button, Form } from "react-bootstrap";
 import { gql, useMutation} from "@apollo/client";
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Link,
+    Redirect,
+    useHistory,
+    useLocation
+    } from "react-router-dom";
 import "../styles/admin.css"
 
 const CREATE_NEW_BLOG = gql`
@@ -18,6 +27,14 @@ mutation createBlog($title: String!, $description: String!, $text: String!, $com
 `;
 
 function Admin() {
+
+    const location = useLocation();
+    let authenticated = null;
+    if(location.state == undefined) {
+        authenticated = false;
+    } else {
+        authenticated = true;
+    }
 
     const [addBlog] = useMutation(CREATE_NEW_BLOG)
     const[title, setTitle] = useState('')
@@ -56,7 +73,9 @@ function Admin() {
     }
 
     return(
+
     <div>
+    {authenticated ? <div>
         <h2>Create a new blog</h2>
 
     <div id="container">
@@ -98,6 +117,7 @@ function Admin() {
 
     <button id="send-button" type="button" onClick={handleSubmit}>Submit</button>
     </div>   
+    </div> : <div>Not authenticated, You have to login :)</div> }
     </div>
     );
 }
