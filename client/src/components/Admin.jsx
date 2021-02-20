@@ -106,7 +106,15 @@ function Admin() {
 
     <button id="send-button" type="button" onClick={handleSubmit}>Submit</button>
     </div>   
-    </div> : <div>Not authenticated, You have to login :)</div> }
+    </div> :
+    <div class="bsod container">
+    <h1 class="neg title"><span class="bg">Unauthorised</span></h1>
+    <p className="entry">You tried to access /admin without login in.</p>
+    <p className="entry">Login below</p>
+    <nav class="nav">
+      <a href="/login" class="link">Click here to login</a>
+    </nav>
+  </div> }
     </div>
     );
 }
