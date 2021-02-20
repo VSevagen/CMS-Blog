@@ -1,6 +1,5 @@
-import logo from "./logo.svg";
 import "./App.css";
-import { InMemoryCache, gql } from "apollo-boost";
+import { InMemoryCache } from "apollo-boost";
 import ApolloClient from "apollo-boost";
 import { ApolloProvider } from "@apollo/client";
 import Overview from "./components/Overview";
@@ -9,12 +8,7 @@ import Projects from "./components/Projects";
 import Admin from "./components/Admin";
 import BlogFormat from "./components/BlogFormat";
 import Login from "./components/Login";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Redirect,
-} from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 
 /** Simple app that just shows the LightsOut game. */
 const client = new ApolloClient({

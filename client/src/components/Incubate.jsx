@@ -6,13 +6,13 @@ import Final from "../public/final.jpg"
 function Incubate() {
     return(
                             <div>
-                                <p class="blog-content">
+                                <p className="blog-content">
                                 This is my second hackathon and I did not expect it to be so professional. The mentors were really helpful, the Jury were frank, they did not hold back their words which is appreciated since we needed to hear it :). Apart from that, the working place was spacious and welcoming so we definitely did not feel awkward.<br></br><br></br>
                                 So this is how the hackathon went,<br></br>
 
 We arrived at the InQ building at around 7.45 in the morning. We were suppose to be there by 9.00 am but since we did not know where it was located, we preferred not taking any risk. When we reached there, we completed the usual registration process and were allocated a working space. By 11.00 am, the mentors and Jury members came and explained the problem statement which were as mentioned: Sustainable Growth Awareness, Emergency Response, E-healthcare, Women security solutions, Smart meters for electricity. The mentors especially Mr Abhijit Parkhi, were very professional with their topic and gave a clear and vivid explanation of things. At noon, we got started.<br></br><br></br>
-<img id="special" class="blog_img" src={IND} alt=""></img><br></br>
-<p class="custom-text text-center">Discussing about an idea with teammates</p>
+<img id="special" className="blog_img" src={IND} alt=""></img><br></br>
+<p className="custom-text text-center">Discussing about an idea with teammates</p>
 Before coming to the hackathon, we chose our problem statement as Emergency Response. So we quickly got working on that and quickly came up with an idea. So I quote, “Our idea was to create an application that scraps Twitter for tweets depending on a specific keyword that can be inputted. The output is in the form of a graph where the y-axis reflects the frequency of occurrence of that word and other associated word and the x-axis, the words itself. ” The positive points that we had for this idea was that :<br></br><br></br>
 <strong>1st</strong> : We know that nowadays people do tweet a lot about anything and everything. So our main view was that during a disaster such as a flood, people would be tweeting about it and we could use that to inform people who might be on the trajectory of it.<br></br><br></br>
 <strong>2nd</strong>: Usually this is the general scenario, the news or radio cast inform people about an imminent danger and then people start to prepare for it or evacuate. So we would increase speed of news transfer to the people and help save more lives.<br></br><br></br>
@@ -22,8 +22,8 @@ So we created the application, tested it, prepared a slideshow and got ready for
 Now this is where its gonna go down, …….for us !<br></br><br></br>
 
 We got into room , confident and started presenting our idea, giving the positive points and doing a demo of the app. Suddenly a member of the Jury, Mr Debasis Chakroborty, asked us a really simple question, I quote,”Who uses twitter ?”….Sounds like a strange question right, well its not.<br></br><br></br>
-<img id="special" class="blog_img" src={Eval} alt=""></img><br></br>
-<p class="custom-text text-center">Presenting our idea</p>
+<img id="special" className="blog_img" src={Eval} alt=""></img><br></br>
+<p className="custom-text text-center">Presenting our idea</p>
 See the point is that according to statistics, only about 30 million people across India uses twitter. That is about 2.2% of Indian population which is very low compared to other social media platform. That was enough of a point for the other Jury members to pitch in.<br></br><br></br>
 
 Overall we completely lost this round to them 🙁<br></br><br></br>
@@ -51,8 +51,8 @@ So the list of teams went on and finally our team was called !<br></br><br></br>
 We got really excited but stressed at the same time because we needed to do better than our previous presentation to win this competition. So we gathered our mental strength and internally prepared for it. We presented it as professionally as possible and answered all their questions very clearly.<br></br><br></br>
 
 Unfortunately, we did not win but it was a great learning experience so in a way we won. 🙂 We got to interact with many people from different background and fields especially Mr Vijetha Shastry who genuinely help us regarding our first project. If he did not frankly tell us that our idea was bad, we would have continued the same way so thank you !<br></br><br></br>
-<img id="unique" class="blog_img" src={Final} alt=""></img><br></br>
-<p class="custom-text text-center">Getting our certificates</p>
+<img id="unique" className="blog_img" src={Final} alt=""></img><br></br>
+<p className="custom-text text-center">Getting our certificates</p>
 Also thanks a lot IncubateIND ,InQ and the volunteers for having helped us during those 30 long hours. We hope to see you all soon!<br></br>
 
                                 </p>

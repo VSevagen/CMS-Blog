@@ -26,15 +26,15 @@ function About()  {
     if(error) return `Error! ${error.message}`;
 
     return (
-        <div class="about">
+        <div className="about">
             <Header />
 
             {data.about.map(about => (
-            <div class="layout">
+            <div className="layout">
                 <p>Hi there ! <br></br>
                 My name is <strong>{about.name}</strong>. {about.desc}</p>
 
-                <p class="text-center">-----------------------------------------------------------------------------</p>
+                <p className="text-center">-----------------------------------------------------------------------------</p>
                 <p>
                     <span>Things I've meddled with :</span><br></br><br></br>
                     {about.skills.map(skill =>(
@@ -43,8 +43,8 @@ function About()  {
                         </div>
                     ))}
                 </p>
-                <p class="text-center">-----------------------------------------------------------------------------</p>
-                <p class="center-tag">Contact</p>
+                <p className="text-center">-----------------------------------------------------------------------------</p>
+                <p className="center-tag">Contact</p>
                 <p>Email: {about.email}</p>
 
             </div>

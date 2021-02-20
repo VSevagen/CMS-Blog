@@ -3,18 +3,18 @@ import React from "react"
 function Python() {
     return(
                         <div>
-                            <p class="blog-content">
+                            <p className="blog-content">
                             Python is administered by the non-profit Python Software Foundation. It is a programming language which is quite versatile for different sorts of projects and easy for beginners to read and grasp.<br></br>
 
 Firstly , everything about Python is free and available online. The language is open-sourced and free to use for everyone. Basically you just need to install Python on your PC or laptop, find a text editor to write your code and finally use your terminal or command prompt to execute your programs .
 
 According to me ,these are the points that makes Python a great programming language.<br></br><br></br>
 
-                                <ul class="list-group">
-                                    <li class="list-group-item" id="special">1. Transparent and readable syntax</li>
-                                    <li class="list-group-item" id="special">2. Versatility</li>
-                                    <li class="list-group-item" id="special">3. Rapid Growth</li>
-                                    <li class="list-group-item" id="special">4. Availability of resources</li>
+                                <ul className="list-group">
+                                    <li className="list-group-item" id="special">1. Transparent and readable syntax</li>
+                                    <li className="list-group-item" id="special">2. Versatility</li>
+                                    <li className="list-group-item" id="special">3. Rapid Growth</li>
+                                    <li className="list-group-item" id="special">4. Availability of resources</li>
                                 </ul><br></br>
 
                                 <strong>Transparent and Readable syntax</strong><br></br>
@@ -40,10 +40,10 @@ In other words, Python’s simple and clear syntax allows you to focus on creati
 
                                 <strong>Availability of resources</strong><br></br>
                                 I got started with Python by taking online course. Just googling python courses gives you millions and millions of websites where you could learn Python which can be a bit much sometimes. That’s why I’ve listed my favorite resources for beginners to start Python right now.<br></br><br></br>
-                                <ul class="list-group">
-                                    <li class="list-group-item" id="special"><strong>Udemy</strong> : This is an online learning platform where you can learn about anything including programming languages such as Python. The only minus is that it is not free but luckily it is not that expensive either and the tutorial are given by professionals in the working industry. </li>
-                                    <li class="list-group-item" id="special"><strong>Code-academy</strong> : Their Python course is excellent for beginners to get the hang of  the basic concepts of the language. Gamified learning works well in this case and the exercises are enough to tell if Python works for you.</li>
-                                    <li class="list-group-item" id="special"><strong>Exercism</strong> : Excellent exercises for practicing your newly acquired skills from Code-academy.</li>
+                                <ul className="list-group">
+                                    <li className="list-group-item" id="special"><strong>Udemy</strong> : This is an online learning platform where you can learn about anything including programming languages such as Python. The only minus is that it is not free but luckily it is not that expensive either and the tutorial are given by professionals in the working industry. </li>
+                                    <li className="list-group-item" id="special"><strong>Code-academy</strong> : Their Python course is excellent for beginners to get the hang of  the basic concepts of the language. Gamified learning works well in this case and the exercises are enough to tell if Python works for you.</li>
+                                    <li className="list-group-item" id="special"><strong>Exercism</strong> : Excellent exercises for practicing your newly acquired skills from Code-academy.</li>
                                 </ul><br></br>
                           
                             </p>

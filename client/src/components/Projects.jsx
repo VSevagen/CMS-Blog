@@ -24,7 +24,7 @@ function Projects(){
     return(
         <div>
             <Header/>
-            <div class="post-list">
+            <div className="post-list">
                 <ul>
                     {data.projects.map(project => (
                         <li>
@@ -32,11 +32,11 @@ function Projects(){
                         <h4>
                             {project.desc}
                         </h4>
-                        <a class="project-link" href={project.demolink}>
-                            {project.demolink == "" ? "": "Play"}
+                        <a className="project-link" href={project.demolink}>
+                            {project.demolink === "" ? "": "Play"}
                         </a>
                         <a id="unecessary" href="/project">Had to include text because of screen-reader warning</a> { /* this is just for space btw */}
-                        <a class="project-link" href={project.link} >Link to project</a> 
+                        <a className="project-link" href={project.link} >Link to project</a> 
                         </li>
                     ))}
                 </ul>

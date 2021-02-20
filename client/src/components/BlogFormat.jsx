@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import Header from './Header';
 import Footer from './Footer'
 import "../styles/blog.css"
@@ -26,14 +26,14 @@ function BlogFormat(props) {
         return(
             <div>
                   <Header />
-                    <div class="post-list">
+                    <div className="post-list">
                         <ul>
                             <li>
-        <div class="blog-title">{props.location.aboutProps.title}</div>
-                                <div class="blog-date">{props.location.aboutProps.date}</div>
+        <div className="blog-title">{props.location.aboutProps.title}</div>
+                                <div className="blog-date">{props.location.aboutProps.date}</div>
     
                                 <div>
-                                    <p className="blog-content">
+                                    <p classNameName="blog-content">
                                         {Blog}
                                     </p>
                                 </div>

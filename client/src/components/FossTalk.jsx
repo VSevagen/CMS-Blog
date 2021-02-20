@@ -5,9 +5,9 @@ import Me from "../public/me.jpg"
 function Fosstalk(){
     return (
                         <div>
-                            <p class="blog-content">
+                            <p className="blog-content">
                             It all started with a simple message which was completely unexpected.<br></br>
-                            <img class="blog_img img-thumbnail" src={fosstalk} alt="" ></img><br></br><br></br>
+                            <img className="blog_img img-thumbnail" src={fosstalk} alt="" ></img><br></br><br></br>
 
                             I was like, why ??…why me?? . I knew it was going to be my turn one day but not as soon as this. Anyway I did not have a choice so I had to prepare something and quick as it was gonna happen in 1 day.<br></br><br></br>
 
@@ -24,8 +24,8 @@ At 7.00 pm, I had to no choice but to choose one and that is when I got the blin
 Once I got my topic, I started with the slides. Took me one hour and started a small refresher session with myself(Diving is not something you forget but the technical terms ,yes).<br></br><br></br>
 
 The next day was the big day. I went through the slides in the morning, tried reviewing the technical terms, did some self-explanation as if I was talking to an audience and that was it. “Big round of applause for Sevagen”, I was asked to come forward and start. My heart got panicky and beat its drum loudly in order to appeal to the other senses for help. It beat faster and faster until its palpitation gathered the speed of a race-horse. Finally I opened my mouth and started uttering a few words. The last thing I knew is that I spoke for a non-stop 30 minutes. I was surprised myself that I spoke that much.<br></br><br></br> 
-<img class="custom" src={Me} alt=""></img><br></br><br></br>
-<p class="custom-text text-center" >Me explaining about a BCD, the 1st and 2nd stage of a scuba diving equipment</p>
+<img className="custom" src={Me} alt=""></img><br></br><br></br>
+<p className="custom-text text-center" >Me explaining about a BCD, the 1st and 2nd stage of a scuba diving equipment</p>
 Anyway the lesson I got from this experience is to face your fears, whatever they might be. They will do nothing but prevent you from improving in life. They will hold you back from opportunities which you could easily obtain.
 
 So do not hold back, do whatever you think might be beneficial for you before it is too late.

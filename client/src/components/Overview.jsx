@@ -31,8 +31,7 @@ function Overview() {
             <div className="post-list">
                 <ul>
                     {data.blogs.map(blog => (
-                        <li>
-                            {/* <a id="blog-title" href={blog.title}>{blog.title}</a> blog.title.replace(/\s+/g, ''),*/}
+                        <li key={blog.title}>
                             <Link id="blog-title" to={{
                                 pathname: blog.title.replace(/[\s()]+/g, ''),
                                 aboutProps: {

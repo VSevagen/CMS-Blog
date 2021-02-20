@@ -5,18 +5,18 @@ import DarkToggle from "./DarkToggle";
 function Header() {
     return (
         <div>
-            <div class="header">
-                <div class="site-title">
+            <div className="header">
+                <div className="site-title">
                     <a id="title" href="/">My Blog</a>
                     <DarkToggle />
-                    <div class="site-options">
+                    <div className="site-options">
                         <Link to="/projects">Projects</Link>
                         <Link to="/about">About</Link>
                     </div>
                 </div>
             </div>
 
-            <div class="separator"></div> 
+            <div className="separator"></div> 
         </div>
     );
 }
