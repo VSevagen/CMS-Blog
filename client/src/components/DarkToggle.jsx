@@ -1,4 +1,5 @@
-import React, {useState, useEffect} from "react";
+import {useEffect} from "react";
+import createPersistedState from 'use-persisted-state';
 import { useMediaQuery } from "react-responsive";
 import Switch from "react-switch";
 import "../styles/main.css"
@@ -6,6 +7,8 @@ import "../styles/main.css"
 const DARK_CLASS = "dark";
 
 function DarkToggle() {
+
+    const useDarkState = createPersistedState('isDark')
     const systemPrefersDark = useMediaQuery(
         {
           query: "(prefers-color-scheme: dark)"
@@ -16,7 +19,7 @@ function DarkToggle() {
         }
       );
 
-      const [isDark, setisDark] = useState(systemPrefersDark);
+      const [isDark, setisDark] = useDarkState(systemPrefersDark);
 
       useEffect(() => {
         // whatever we put here will run whenever `isDark` changes
