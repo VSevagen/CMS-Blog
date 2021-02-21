@@ -1,16 +1,16 @@
 html {
   --primaryBackgroundColor: white;
-  --primaryTextColor: #525252;
+  --primaryTextColor: #3f3e3e;
 }
 
 html.dark {
-  --primaryBackgroundColor: #525252;
+  --primaryBackgroundColor: #444444;
   --primaryTextColor: white;
 }
 
 @media (prefers-color-scheme: dark) {
   html {
-    --primaryBackgroundColor: #525252;
+    --primaryBackgroundColor: #444444;
     --primaryTextColor: white;
   }
 }
