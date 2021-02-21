@@ -33,9 +33,9 @@ function BlogFormat(props) {
                                 <div className="blog-date">{props.location.aboutProps.date}</div>
     
                                 <div>
-                                    <p classNameName="blog-content">
+                                    <div classNameName="blog-content">
                                         {Blog}
-                                    </p>
+                                    </div>
                                 </div>
                             </li>
                         </ul>
