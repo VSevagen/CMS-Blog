@@ -20,17 +20,26 @@ function BlogFormat(props) {
         MediaWiki: MediaWiki,
         Python: Python,
         FossTalk: FossTalk
-        }
-    const Blog = React.createElement(components[props.location.aboutProps.component])
-    
+        };
+
+    if (props.location.aboutProps != undefined) {
+        let blogName = props.location.aboutProps.component;
+        let title = props.location.aboutProps.title;
+        let date = props.location.aboutProps.date;
+        localStorage.setItem('blogName', blogName);
+        localStorage.setItem('title', title);
+        localStorage.setItem('date', date);
+    }
+
+    const Blog = React.createElement(components[localStorage.getItem('blogName')]);
         return(
             <div>
                   <Header />
                     <div className="post-list">
                         <ul>
                             <li>
-        <div className="blog-title">{props.location.aboutProps.title}</div>
-                                <div className="blog-date">{props.location.aboutProps.date}</div>
+        <div className="blog-title">{localStorage.getItem('title')}</div>
+                                <div className="blog-date">{localStorage.getItem('date')}</div>
     
                                 <div>
                                     <div classNameName="blog-content">
