@@ -71,12 +71,12 @@ body {
 }
 .top:after {
   transform: rotate(135deg);
-  background: #ebeae9;
+  background: #d8d7d7;
 }
 
 .bottom:before {
   transform: rotate(-45deg);
-  background: #ebeae9;
+  background: #d8d7d7;
 }
 .bottom:after {
   transform: rotate(-135deg);
