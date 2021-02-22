@@ -6,6 +6,7 @@ const mongoose = require("mongoose"); // impor the mongoose drivers
 const Blog = require("./models/blog");
 const About = require("./models/about");
 const Project = require("./models/project");
+const Login = require("./models/login");
 const cors = require("cors");
 
 const app = express(); // create express server
@@ -41,6 +42,12 @@ app.use(
           demolink: String!
         }
 
+        type Login {
+          _id: ID!
+          username: String!
+          password: String!
+        }
+
         input BlogInput {
             title: String!
             text: String!
@@ -63,16 +70,23 @@ app.use(
           demolink: String!
         }
 
+        input LoginInput {
+          username: String!
+          password: String!
+        }
+
         type blogQuery {
             blogs: [Blog!]!
             about: [About!]!
             projects: [Project!]!
+            login: [Login!]!
         }
 
         type blogMutation {
             createBlog(blogInput: BlogInput): Blog
             createAbout(aboutInput: AboutInput): About
             createProject(projectInput: ProjectInput): Project
+            createLogin(loginInput: LoginInput): Login
         }
 
         schema {
@@ -111,6 +125,16 @@ app.use(
           });
       },
 
+      login: () => {
+        return Login.find()
+          .then((login) => {
+            return login;
+          })
+          .catch((err) => {
+            throw err;
+          });
+      },
+
       createBlog: (args) => {
         const blog = new Blog({
           title: args.blogInput.title,
@@ -121,6 +145,24 @@ app.use(
         });
 
         return blog
+          .save()
+          .then((result) => {
+            console.log(result);
+            return result;
+          })
+          .catch((err) => {
+            console.log(err);
+            throw err;
+          });
+      },
+
+      createLogin: (args) => {
+        const login = new Login({
+          username: args.loginInput.username,
+          password: args.loginInput.password,
+        });
+
+        return login
           .save()
           .then((result) => {
             console.log(result);
