@@ -12,6 +12,7 @@ function Header() {
                     <div className="site-options">
                         <Link to="/projects">Projects</Link>
                         <Link to="/about">About</Link>
+                        <Link to="/login">Login</Link>
                     </div>
                 </div>
             </div>
