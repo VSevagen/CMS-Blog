@@ -109,3 +109,9 @@ body {
   border: 1px solid #ccc;
   font-family: inherit;
 }
+
+.errorMsg {
+  text-align: center;
+  background-color: rgb(235, 93, 93);
+  color: white;
+}
