@@ -2,8 +2,6 @@ import React from 'react'
 import Header from './Header';
 import Footer from './Footer'
 import "../styles/blog.css"
-import GnomeAsia from './GnomeAsia'
-import SchoolVisit from './SchoolVisit'
 import Incubate from './Incubate'
 import MySQLErr from './MySQLErr'
 import MediaWiki from './MediaWiki'
@@ -13,8 +11,6 @@ import FossTalk from './FossTalk'
 function BlogFormat(props) {
 
     const components = {
-        GnomeAsia: GnomeAsia,
-        SchoolVisit: SchoolVisit,
         IncubateIND: Incubate,
         MySQL: MySQLErr,
         MediaWiki: MediaWiki,
@@ -26,9 +22,15 @@ function BlogFormat(props) {
         let blogName = props.location.aboutProps.component;
         let title = props.location.aboutProps.title;
         let date = props.location.aboutProps.date;
+        let text = props.location.aboutProps.text;
         localStorage.setItem('blogName', blogName);
         localStorage.setItem('title', title);
         localStorage.setItem('date', date);
+        localStorage.setItem('text', text);
+    }
+
+    function createMarkup () {
+        return {__html: localStorage.getItem('text')}
     }
 
     const Blog = React.createElement(components[localStorage.getItem('blogName')]);
@@ -40,10 +42,9 @@ function BlogFormat(props) {
                             <li>
         <div className="blog-title">{localStorage.getItem('title')}</div>
                                 <div className="blog-date">{localStorage.getItem('date')}</div>
-    
+
                                 <div>
-                                    <div classNameName="blog-content">
-                                        {Blog}
+                                    <div dangerouslySetInnerHTML={createMarkup()} >
                                     </div>
                                 </div>
                             </li>
