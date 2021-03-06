@@ -3,11 +3,22 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import { BrowserRouter } from "react-router-dom";
+import { transitions, positions, Provider as AlertProvider } from "react-alert";
+import AlertTemplate from "react-alert-template-basic";
+
+const options = {
+  position: positions.TOP,
+  timeout: 5000,
+  offset: "20px",
+  type: "success",
+  transition: transitions.SCALE,
+};
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <AlertProvider template={AlertTemplate} {...options}>
+      <App />
+    </AlertProvider>
   </React.StrictMode>,
   document.getElementById("root")
 );
