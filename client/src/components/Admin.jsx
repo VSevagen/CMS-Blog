@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { gql, useMutation} from "@apollo/client";
 import { useLocation } from "react-router-dom";
 import "../styles/admin.css"
+import Header from './Header'
+import { useAlert } from 'react-alert'
 
 const CREATE_NEW_BLOG = gql`
 mutation createBlog($title: String!, $description: String!, $text: String!, $component: String!, $date: String!) {
@@ -17,6 +19,7 @@ mutation createBlog($title: String!, $description: String!, $text: String!, $com
 
 function Admin() {
 
+    const alert = useAlert();
     let marked = require("marked");
     const location = useLocation();
     let authenticated = null;
@@ -44,6 +47,7 @@ function Admin() {
         setDate('')
         setDesc('')
         setComp('')
+        alert.show("Blog submitted");
     }
 
     function handleChange(evt) {
@@ -69,8 +73,9 @@ function Admin() {
     return(
 
     <div>
-    {authenticated ? 
+    {authenticated ?
     <div>
+        <Header />
         <div><h2>Create a new blog</h2></div>
 
         <div style={center}>
@@ -105,13 +110,12 @@ function Admin() {
 
         </div>
 
-        
         <button type="button" id="center" class="btn btn-outline-secondary" onClick={handleSubmit}>Submit</button>
 
 
         </div>
     </div>
-    
+
     // <div>
     //     <h2>Create a new blog</h2>
 
@@ -154,8 +158,8 @@ function Admin() {
     // </span>
 
     // <button id="send-button" type="button" onClick={handleSubmit}>Submit</button>
-    // </div>   
-    // </div> 
+    // </div>
+    // </div>
     :
     <div class="bsod container">
     <h1 class="neg title"><span class="bg">Unauthorised</span></h1>
