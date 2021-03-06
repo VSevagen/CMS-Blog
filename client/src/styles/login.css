@@ -11,10 +11,10 @@ body {
 }
 
 .container {
-  /* position: absolute; */
-  width: 100%;
+  position: absolute;
   height: 100%;
   overflow: hidden;
+  min-width: 100%;
 }
 .container:hover .top:before,
 .container:hover .top:after,

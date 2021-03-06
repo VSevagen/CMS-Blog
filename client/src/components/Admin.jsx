@@ -164,10 +164,7 @@ function Admin() {
     <div class="bsod container">
     <h1 class="neg title"><span class="bg">Unauthorised</span></h1>
     <p className="entry">You tried to access /admin without login in.</p>
-    <p className="entry">Login below</p>
-    <nav class="nav">
-      <a href="/login" class="link">Click here to login</a>
-    </nav>
+    <p className="entry"><a href="/login">Click here to login</a></p>
   </div> }
     </div>
     );

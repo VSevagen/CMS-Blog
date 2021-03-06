@@ -46,16 +46,3 @@ body {
   text-align: center;
   margin-bottom: 50px;
 }
-.bsod .nav {
-  margin-top: 35px;
-  text-align: center;
-}
-.bsod .nav .link {
-  text-decoration: none;
-  padding: 0 9px 2px 8px;
-}
-.bsod .nav .link:hover,
-.bsod .nav .link:focus {
-  background: #aaaaaa;
-  color: #0414a7;
-}
