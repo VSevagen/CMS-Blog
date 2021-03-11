@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
-import { gql, useMutation} from "@apollo/client";
+import { gql, useMutation, useQuery} from "@apollo/client";
 import { useLocation } from "react-router-dom";
 import "../styles/admin.css"
 import Header from './Header'
 import { useAlert } from 'react-alert'
+import Loader from "react-loader-spinner"
+import Deletetab from './Deletetab'
 
 const CREATE_NEW_BLOG = gql`
 mutation createBlog($title: String!, $description: String!, $text: String!, $component: String!, $date: String!) {
@@ -15,6 +17,15 @@ mutation createBlog($title: String!, $description: String!, $text: String!, $com
         date
     }
   }
+`;
+
+const FETCH_BLOG = gql`
+query blogs {
+    blogs {
+        _id
+        title
+    }
+}
 `;
 
 function Admin() {
@@ -70,12 +81,22 @@ function Admin() {
         setDate(evt.target.value)
     }
 
+    const {loading, error, data} = useQuery(FETCH_BLOG);
+    if(loading) return <div className="spinner"><Loader type="Grid" color="#9c9c9c" height={80} width={80}/></div>
+    if(error) return `Error! ${error.message}`;
+
     return(
 
     <div>
     {authenticated ?
     <div>
         <Header />
+        <div>
+            <div><h2>Delete your blogs</h2></div>
+            {data.blogs.map(blog => (
+                <Deletetab title={blog.title} id={blog._id}></Deletetab>
+            ))}
+        </div>
         <div><h2>Create a new blog</h2></div>
 
         <div style={center}>
