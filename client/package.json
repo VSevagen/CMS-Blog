@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@apollo/client": "^3.3.7",
+    "@emotion/styled": "^11.1.5",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
@@ -19,6 +20,7 @@
     "react-bootstrap": "^1.4.3",
     "react-dark-mode-toggle": "^0.0.10",
     "react-dom": "^17.0.1",
+    "react-fade-in": "^2.0.1",
     "react-loader-spinner": "^4.0.0",
     "react-responsive": "^8.2.0",
     "react-router": "^5.2.0",
