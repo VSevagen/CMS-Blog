@@ -87,6 +87,7 @@ app.use(
             createAbout(aboutInput: AboutInput): About
             createProject(projectInput: ProjectInput): Project
             createLogin(loginInput: LoginInput): Login
+            removeBlog(id: ID!): Blog
         }
 
         schema {
@@ -192,6 +193,14 @@ app.use(
             console.log(err);
             throw err;
           });
+      },
+
+      removeBlog: (args) => {
+        const removeUser = Blog.findByIdAndRemove(args.id).exec();
+        if (!removeUser) {
+          throw new Error("Error");
+        }
+        return removeUser;
       },
 
       createAbout: (args) => {
