@@ -239,7 +239,9 @@ var corsOptionsDelegate = function (req, callback) {
   callback(null, corsOptions); // callback expects two parameters: error and options
 };
 
-app.get('/', (req, res) => { res.send('Hello from Express!')
+app.get("/", (req, res) => {
+  res.send("Hello from Express!");
+});
 
 app.get("/graphql", function (req, res, next) {
   console.log("Graphql path");
