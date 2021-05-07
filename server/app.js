@@ -8,6 +8,7 @@ const About = require("./models/about");
 const Project = require("./models/project");
 const Login = require("./models/login");
 const cors = require("cors");
+require("dotenv").config();
 
 const app = express(); // create express server
 app.options("*", cors());
@@ -238,6 +239,8 @@ var corsOptionsDelegate = function (req, callback) {
   callback(null, corsOptions); // callback expects two parameters: error and options
 };
 
+app.get('/', (req, res) => { res.send('Hello from Express!')
+
 app.get("/graphql", function (req, res, next) {
   console.log("Graphql path");
 });
@@ -245,11 +248,11 @@ app.get("/graphql", function (req, res, next) {
 app.use(cors(corsOptionsDelegate));
 mongoose
   .connect(
-    "mongodb+srv://sevagen:V130499100084G@cluster0.q4vjy.mongodb.net/blogs?retryWrites=true&w=majority",
+    `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}cluster0.q4vjy.mongodb.net/blogs?retryWrites=true&w=majority`,
     { useNewUrlParser: true, useUnifiedTopology: true }
   )
   .then(() => {
-    app.listen(5000, () => {
+    app.listen(process.env.PORT || 5000, () => {
       console.log("Connected to db and server running at 5000");
     });
   })
