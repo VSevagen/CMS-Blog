@@ -11,8 +11,20 @@ const cors = require("cors");
 require("dotenv").config();
 
 const app = express(); // create express server
-app.options("*", cors());
 app.use(bodyParser.json()); // use body-parser middleware to parse incoming json
+
+app.use(function (req, res, next) {
+  res.header("Access-Control-Allow-Origin", process.env.CLIENT_URL);
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept"
+  );
+  res.header("Access-Control-Allow-Methods", "POST, GET, OPTIONS, DELETE, PUT");
+  if (req.method === "OPTIONS") {
+    return res.status(200).end();
+  }
+  next();
+});
 
 app.use(
   "/graphql",
@@ -228,26 +240,11 @@ app.use(
   })
 );
 
-var allowlist = ["http://localhost:3000"];
-var corsOptionsDelegate = function (req, callback) {
-  var corsOptions;
-  if (allowlist.indexOf(req.header("Origin")) !== -1) {
-    corsOptions = { origin: true }; // reflect (enable) the requested origin in the CORS response
-  } else {
-    corsOptions = { origin: false }; // disable CORS for this request
-  }
-  callback(null, corsOptions); // callback expects two parameters: error and options
-};
-
 app.get("/", (req, res) => {
   res.send("Hello from Express!");
 });
 
-app.get("/graphql", function (req, res, next) {
-  console.log("Graphql path");
-});
-
-app.use(cors(corsOptionsDelegate));
+app.use(cors({ origin: true, credentials: true }));
 mongoose
   .connect(
     `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}cluster0.q4vjy.mongodb.net/blogs?retryWrites=true&w=majority`,
