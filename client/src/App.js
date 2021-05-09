@@ -5,8 +5,11 @@ import { ApolloProvider } from "@apollo/client";
 import Routes from "./components/Routes";
 
 const client = new ApolloClient({
-  uri: "/graphql",
+  uri: `${process.env.REACT_APP_SERVER_URL}`,
   cache: new InMemoryCache(),
+  fetchOptions: {
+    credentials: "include",
+  },
   onError: ({ networkError, graphQLErrors }) => {
     console.log("graphQLErrors", graphQLErrors);
     console.log("networkError", networkError);
