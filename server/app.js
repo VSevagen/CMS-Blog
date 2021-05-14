@@ -3,6 +3,9 @@ const bodyParser = require("body-parser"); // import body-parser
 const graphqlHttp = require("express-graphql").graphqlHTTP; // import graphql to use as middleware
 const { buildSchema } = require("graphql"); // import the function to build our schema
 const mongoose = require("mongoose"); // impor the mongoose drivers
+const expressJwt = require("express-jwt");
+const unless = require("express-unless");
+const jwt = require("jsonwebtoken");
 const Blog = require("./models/blog");
 const About = require("./models/about");
 const Project = require("./models/project");
@@ -17,15 +20,33 @@ app.use(function (req, res, next) {
   res.header("Access-Control-Allow-Origin", process.env.CLIENT_URL);
   res.header(
     "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept"
+    "Origin, X-Requested-With, Content-Type, Accept, Authorization"
   );
-  res.header("Access-Control-Allow-Methods", "POST, GET, OPTIONS, DELETE, PUT");
+  res.header(
+    "Access-Control-Allow-Methods",
+    "POST, GET, OPTIONS,PATCH, DELETE, PUT"
+  );
   if (req.method === "OPTIONS") {
     return res.status(200).end();
   }
   next();
 });
 
+const verifyToken = (req, res, next) => {
+  jwt.verify(
+    req.headers.authorization,
+    process.env.SUPER_SECRET,
+    (err, decoded) => {
+      if (err) {
+        return res.send(401);
+      }
+      next();
+    }
+  );
+};
+verifyToken.unless = unless;
+
+app.use(verifyToken.unless({ path: ["/auth"] }));
 app.use(
   "/graphql",
   graphqlHttp({
@@ -244,7 +265,6 @@ app.get("/", (req, res) => {
   res.send("Hello from Express!");
 });
 
-app.use(cors({ origin: true, credentials: true }));
 mongoose
   .connect(
     `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}cluster0.q4vjy.mongodb.net/blogs?retryWrites=true&w=majority`,
