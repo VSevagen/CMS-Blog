@@ -4,6 +4,7 @@ const graphqlHttp = require("express-graphql").graphqlHTTP; // import graphql to
 const { buildSchema } = require("graphql"); // import the function to build our schema
 const mongoose = require("mongoose"); // impor the mongoose drivers
 const expressJwt = require("express-jwt");
+const path = require("path");
 const unless = require("express-unless");
 const jwt = require("jsonwebtoken");
 const Blog = require("./models/blog");
@@ -46,7 +47,8 @@ const verifyToken = (req, res, next) => {
 };
 verifyToken.unless = unless;
 
-app.use(verifyToken.unless({ path: ["/auth"] }));
+app.use(verifyToken.unless({ path: ["/"] }));
+
 app.use(
   "/graphql",
   graphqlHttp({
@@ -109,11 +111,18 @@ app.use(
           password: String!
         }
 
+        input UpdateInput {
+          title: String!
+          description: String!
+          text: String!
+        }
+
         type blogQuery {
             blogs: [Blog!]!
             about: [About!]!
             projects: [Project!]!
             login: [Login!]!
+            blogById(id: ID!):Blog
         }
 
         type blogMutation {
@@ -122,6 +131,7 @@ app.use(
             createProject(projectInput: ProjectInput): Project
             createLogin(loginInput: LoginInput): Login
             removeBlog(id: ID!): Blog
+            updateBlog(id: ID!, title: String!, description: String!, text: String!):Blog
         }
 
         schema {
@@ -168,6 +178,14 @@ app.use(
           .catch((err) => {
             throw err;
           });
+      },
+
+      blogById: (args) => {
+        const findblog = Blog.findById(args.id).exec();
+        if (!findblog) {
+          throw new Error("Error");
+        }
+        return findblog;
       },
 
       createBlog: (args) => {
@@ -235,6 +253,18 @@ app.use(
           throw new Error("Error");
         }
         return removeUser;
+      },
+
+      updateBlog: (args) => {
+        const updateContent = Blog.findByIdAndUpdate(args.id, {
+          title: args.title,
+          description: args.description,
+          text: args.text,
+        }).exec();
+        if (!updateContent) {
+          throw new Error("Error");
+        }
+        return updateContent;
       },
 
       createAbout: (args) => {
