@@ -5,7 +5,7 @@ import "../styles/admin.css"
 import Header from './Header'
 import { useAlert } from 'react-alert'
 import Loader from "react-loader-spinner"
-import Deletetab from './Deletetab'
+import EDtab from './EDtab'
 
 const CREATE_NEW_BLOG = gql`
 mutation createBlog($title: String!, $description: String!, $text: String!, $component: String!, $date: String!) {
@@ -24,6 +24,8 @@ query blogs {
     blogs {
         _id
         title
+        description
+        text
     }
 }
 `;
@@ -92,9 +94,9 @@ function Admin() {
     <div>
         <Header />
         <div>
-            <div><h2>Delete your blogs</h2></div>
+            <div><h2>Delete/Edit your blogs</h2></div>
             {data.blogs.map(blog => (
-                <Deletetab title={blog.title} id={blog._id}></Deletetab>
+                <EDtab title={blog.title} id={blog._id} desc={blog.description} text={blog.text}></EDtab>
             ))}
         </div>
         <div><h2>Create a new blog</h2></div>
