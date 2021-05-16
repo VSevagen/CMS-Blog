@@ -62,7 +62,7 @@ opacity: 0.65;
 }
 `;
 
-function Alert(props) {
+function DeleteAlert(props) {
 
     const [title, setTitle] = useState('');
     const [deleteBlog] = useMutation(DELETE_BLOG)
@@ -99,4 +99,4 @@ function Alert(props) {
     );
 }
 
-export default Alert;
+export default DeleteAlert;
