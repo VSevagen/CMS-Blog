@@ -2,6 +2,7 @@ import React, { useState } from "react"
 import styled from '@emotion/styled'
 import { gql, useMutation} from "@apollo/client";
 import FadeIn from 'react-fade-in';
+import { useAlert } from 'react-alert'
 
 const DELETE_BLOG = gql`
 mutation removeBlog($id: ID!) {
@@ -64,12 +65,14 @@ opacity: 0.65;
 
 function DeleteAlert(props) {
 
+    const alert = useAlert();
     const [title, setTitle] = useState('');
+    const [value, setValue] = useState();
     const [deleteBlog] = useMutation(DELETE_BLOG)
 
     function handleSubmit() {
         deleteBlog({variables: {id: props.id}})
-        window.location.reload();
+        alert.show("Blog deleted");
     }
 
     function handleChange(evt) {
