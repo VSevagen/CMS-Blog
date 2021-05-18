@@ -39,7 +39,18 @@ function EditAlert(props) {
     const[title, setTitle] = useState(props.title);
     const[description, setDesc] = useState(props.desc);
     const[text, setText] = useState(props.text)
-    const [updateBlog] = useMutation(UPDATE_BLOG)
+    const [updateBlog] = useMutation
+    (
+        UPDATE_BLOG,
+        {
+            onCompleted(data) {
+                if(data) {
+                    alert.show("Edit successfull !");
+                    window.location.reload();
+                }
+            }
+        }
+    )
 
     function handleChange(evt) {
         setTitle(evt.target.value)
@@ -55,8 +66,6 @@ function EditAlert(props) {
 
     function handleSubmit() {
         updateBlog({variables: {id: id, title: title, description: description, text: text, }});
-        alert.show("Edit successfull !")
-
     }
 
     return(

@@ -46,7 +46,18 @@ function Admin() {
         margin: "0 auto",
         width: "70%"
     }
-    const [addBlog] = useMutation(CREATE_NEW_BLOG)
+    const [addBlog] = useMutation
+    (
+        CREATE_NEW_BLOG,
+        {
+            onCompleted(data) {
+                if(data) {
+                    alert.show("Blog submitted");
+                    window.location.reload();
+                }
+            }
+        }
+    )
     const[title, setTitle] = useState('')
     const[description, setDesc] = useState('')
     const[text, setText] = useState('')
@@ -60,7 +71,6 @@ function Admin() {
         setDate('')
         setDesc('')
         setComp('')
-        alert.show("Blog submitted");
     }
 
     function handleChange(evt) {

@@ -68,11 +68,21 @@ function DeleteAlert(props) {
     const alert = useAlert();
     const [title, setTitle] = useState('');
     const [value, setValue] = useState();
-    const [deleteBlog] = useMutation(DELETE_BLOG)
+    const [deleteBlog] = useMutation
+    (
+        DELETE_BLOG,
+        {
+            onCompleted(data) {
+                if(data) {
+                    alert.show("Blog deleted");
+                    window.location.reload();
+                }
+            }
+        }
+    );
 
     function handleSubmit() {
         deleteBlog({variables: {id: props.id}})
-        alert.show("Blog deleted");
     }
 
     function handleChange(evt) {
