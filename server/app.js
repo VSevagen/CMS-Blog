@@ -264,6 +264,7 @@ app.use(
         if (!updateContent) {
           throw new Error("Error");
         }
+        console.log(updateContent);
         return updateContent;
       },
 
@@ -297,7 +298,7 @@ app.get("/", (req, res) => {
 
 mongoose
   .connect(
-    `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}cluster0.q4vjy.mongodb.net/blogs?retryWrites=true&w=majority`,
+    `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.q4vjy.mongodb.net/blogs?retryWrites=true&w=majority`,
     { useNewUrlParser: true, useUnifiedTopology: true }
   )
   .then(() => {
