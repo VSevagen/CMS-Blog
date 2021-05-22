@@ -6,6 +6,7 @@ import Projects from "./Projects";
 import Admin from "./Admin";
 import BlogFormat from "./BlogFormat";
 import Login from "./Login";
+import PageNotFound from "./PageNotFound";
 
 function Routes() {
   return (
@@ -30,7 +31,7 @@ function Routes() {
         <Route path="/MyFirstFossTalk!!!" component={BlogFormat} />
         <Route path="/" component={Overview} exact />
         <Route path="/admin" component={Admin} />
-        <Route component={Error} />
+        <Route component={PageNotFound} />
       </Switch>
     </Router>
   );
