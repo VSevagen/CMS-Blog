@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import DarkToggle from "./DarkToggle";
 
-function Header() {
+function Header(props) {
     return (
         <div>
             <div className="header">
@@ -12,7 +12,7 @@ function Header() {
                     <div className="site-options">
                         <Link to="/projects">Projects</Link>
                         <Link to="/about">About</Link>
-                        <Link to="/login">Login</Link>
+                        {props.LoggedIn ? <Link to="/">Logout</Link>: <Link to="/login">Login</Link>}
                     </div>
                 </div>
             </div>

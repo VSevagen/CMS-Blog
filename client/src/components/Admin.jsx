@@ -102,7 +102,7 @@ function Admin() {
     <div>
     {authenticated ?
     <div>
-        <Header />
+        <Header LoggedIn={authenticated}/>
         <div>
             <div><h2>Delete/Edit your blogs</h2></div>
             {data.blogs.map(blog => (
