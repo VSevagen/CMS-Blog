@@ -6,11 +6,9 @@ import "../styles/blog.css"
 function BlogFormat(props) {
 
     if (props.location.aboutProps != undefined) {
-        let blogName = props.location.aboutProps.component;
         let title = props.location.aboutProps.title;
         let date = props.location.aboutProps.date;
         let text = props.location.aboutProps.text;
-        localStorage.setItem('blogName', blogName);
         localStorage.setItem('title', title);
         localStorage.setItem('date', date);
         localStorage.setItem('text', text);

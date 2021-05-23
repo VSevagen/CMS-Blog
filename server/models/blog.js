@@ -20,10 +20,6 @@ const blogSchema = new Schema({
     type: String,
     required: true,
   },
-  component: {
-    type: String,
-    required: true,
-  },
 });
 
 module.exports = mongoose.model("Blog", blogSchema);

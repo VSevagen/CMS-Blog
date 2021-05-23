@@ -13,7 +13,6 @@ const GET_BLOG_DETAILS = gql`
             description
             date
             text
-            component
         }
     }
 
@@ -38,7 +37,6 @@ function Overview() {
                                     title: blog.title,
                                     date: blog.date,
                                     text: blog.text,
-                                    component: blog.component
                                 }
                             }}>{blog.title}</Link>
                             <h4>{blog.description}</h4>

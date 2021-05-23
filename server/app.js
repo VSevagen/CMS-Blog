@@ -59,7 +59,6 @@ app.use(
             text: String!
             description: String!
             date: String!
-            component: String!
         }
 
         type About {
@@ -89,7 +88,6 @@ app.use(
             text: String!
             description: String!
             date: String!
-            component: String!
         }
 
         input AboutInput {
@@ -194,7 +192,6 @@ app.use(
           text: args.blogInput.text,
           description: args.blogInput.description,
           date: args.blogInput.date,
-          component: args.blogInput.component,
         });
 
         return blog
