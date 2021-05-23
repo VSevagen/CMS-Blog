@@ -6,6 +6,7 @@ import Header from './Header'
 import { useAlert } from 'react-alert'
 import Loader from "react-loader-spinner"
 import EDtab from './EDtab'
+import Unauthorised from './Unauthorised'
 
 const CREATE_NEW_BLOG = gql`
 mutation createBlog($title: String!, $description: String!, $text: String!, $component: String!, $date: String!) {
@@ -148,57 +149,8 @@ function Admin() {
 
         </div>
     </div>
-
-    // <div>
-    //     <h2>Create a new blog</h2>
-
-    // <div id="container">
-
-    // <span className="input">
-    //     <input type="text" className="input__field" id="input-1" value={title} onChange={handleChange} />
-    //     <label for="input-1" className="input__label">
-    //     <span className="input__label-content">Blog Title</span>
-    // </label>
-    // </span>
-
-    // <span className="input">
-    //     <input type="text" className="input__field" id="input-2" value={component} onChange={handleChange4} />
-    //     <label for="input-2" className="input__label">
-    //     <span className="input__label-content">Component Name</span>
-    //     </label>
-    // </span>
-
-    // <span className="input">
-    //     <input type="text" className="input__field" id="input-3" value={date} onChange={handleChange5}/>
-    //     <label for="input-3" className="input__label">
-    //     <span className="input__label-content">Date</span>
-    //     </label>
-    // </span>
-
-    // <span className="input">
-    //     <input type="text" className="input__field" id="input-4" value={description} onChange={handleChange2}/>
-    //     <label for="input-4" className="input__label">
-    //     <span className="input__label-content">Description</span>
-    //     </label>
-    // </span>
-
-    // <span className="input">
-    //     <div>
-    //         <textarea style={inputStyle} value={text} onChange={handleChange3}>
-    //         </textarea>
-    //     </div>
-    //     <div style={outputStyle} dangerouslySetInnerHTML={{__html: marked(text)}}></div>
-    // </span>
-
-    // <button id="send-button" type="button" onClick={handleSubmit}>Submit</button>
-    // </div>
-    // </div>
     :
-    <div class="bsod container">
-    <h1 class="neg title"><span class="bg">Unauthorised</span></h1>
-    <p className="entry">You tried to access /admin without login in.</p>
-    <p className="entry"><a href="/login">Click here to login</a></p>
-  </div> }
+    <Unauthorised></Unauthorised> }
     </div>
     );
 }
