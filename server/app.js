@@ -130,6 +130,9 @@ app.use(
             createLogin(loginInput: LoginInput): Login
             removeBlog(id: ID!): Blog
             updateBlog(id: ID!, title: String!, description: String!, text: String!):Blog
+            updateAbout(id: ID!, desc: String!, email: String!, skills: [String!]):About
+            updateProject(id: ID!, title: String!, desc: String!, demolink: String!, link: String!):Project
+            removeProject(id: ID!):Project
         }
 
         schema {
@@ -251,6 +254,13 @@ app.use(
         }
         return removeUser;
       },
+      removeProject: (args) => {
+        const removeProject = Project.findByIdAndRemove(args.id).exec();
+        if (!removeProject) {
+          throw new Error("Error");
+        }
+        return removeProject;
+      },
 
       updateBlog: (args) => {
         const updateContent = Blog.findByIdAndUpdate(args.id, {
@@ -263,6 +273,31 @@ app.use(
         }
         console.log(updateContent);
         return updateContent;
+      },
+
+      updateAbout: (args) => {
+        const updatedAbout = About.findByIdAndUpdate(args.id, {
+          desc: args.desc,
+          email: args.email,
+          skills: args.skills,
+        }).exec();
+        if (!updatedAbout) {
+          throw new Error("Error");
+        }
+        return updatedAbout;
+      },
+
+      updateProject: (args) => {
+        const updatedProject = Project.findByIdAndUpdate(args.id, {
+          title: args.title,
+          desc: args.desc,
+          demolink: args.demolink,
+          link: args.link,
+        }).exec();
+        if (!updatedProject) {
+          throw new Error("Error");
+        }
+        return updatedProject;
       },
 
       createAbout: (args) => {
