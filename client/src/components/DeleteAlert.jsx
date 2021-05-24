@@ -12,6 +12,14 @@ mutation removeBlog($id: ID!) {
 }
 `;
 
+const DELETE_PROJECT = gql`
+mutation removeProject($id: ID!) {
+    removeProject(id: $id) {
+        _id
+    }
+}
+`;
+
 const Container = styled.div`
 position: relative;
 padding: .75rem 1.25rem;
@@ -67,7 +75,7 @@ function DeleteAlert(props) {
 
     const alert = useAlert();
     const [title, setTitle] = useState('');
-    const [value, setValue] = useState();
+    const [value, setValue] = useState(props.type);
     const [deleteBlog] = useMutation
     (
         DELETE_BLOG,
@@ -81,8 +89,26 @@ function DeleteAlert(props) {
         }
     );
 
+    const [deleteProject] = useMutation
+    (
+        DELETE_PROJECT,
+        {
+            onCompleted(data) {
+                if(data) {
+                    alert.show("Project deleted");
+                    window.location.reload();
+                }
+            }
+        }
+    )
+
     function handleSubmit() {
-        deleteBlog({variables: {id: props.id}})
+        if(value == 'project') {
+            deleteProject({variables: {id:props.id}})
+        }
+        if(value == 'blog') {
+            deleteBlog({variables: {id: props.id}})
+        }
     }
 
     function handleChange(evt) {

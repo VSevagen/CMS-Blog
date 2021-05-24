@@ -23,17 +23,23 @@ margin-left: 10px;
 border-radius: 5px;
 padding: 2px;
 font-size: 15px;
+&:hover {
+    border: 1px solid red;
+}
 `;
 
 const EditButton = styled.button`
 float: right;
-color: white;
-background-color: #1f73b3;
+color: black;
+// background-color: #65af32;
 border: 0;
 margin-left: 10px;
 border-radius: 5px;
 padding: 2px;
 font-size: 15px;
+&:hover {
+    border: 1px solid black;
+}
 `;
 
 function EDtab(props) {
@@ -60,7 +66,7 @@ function EDtab(props) {
     return(
     <div>
         <Tab>{props.title}<EditButton onClick={handleEdit}>Edit</EditButton><DeleteButton onClick={handleClick}>Delete</DeleteButton></Tab>
-        { del ? <DeleteAlert title={props.title} id={props.id} handler={handleIconClickDelete} ></DeleteAlert> : ""}
+        { del ? <DeleteAlert type={props.type} title={props.title} id={props.id} handler={handleIconClickDelete} ></DeleteAlert> : ""}
         { edit ? <EditAlert id={props.id} title={props.title} desc={props.desc} text={props.text} handler={handleIconClickEdit}></EditAlert>: ""}
     </div>
     );
