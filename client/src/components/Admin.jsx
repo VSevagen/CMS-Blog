@@ -10,6 +10,7 @@ import Loader from "react-loader-spinner";
 import EDtab from './EDtab';
 import Unauthorised from './Unauthorised';
 import ProjectEditor from './ProjectEditor';
+import Footer from './Footer'
 
 const CREATE_NEW_BLOG = gql`
 mutation createBlog($title: String!, $description: String!, $text: String!, $date: String!) {
@@ -52,7 +53,7 @@ margin-top: 3rem;
 margin-bottom: 3rem;
 padding: 0.6em;
 width: 60%;
-background-color: #e7e6dd;
+background-color: #white;
 margin-left:20%;
 margin-right:20%;
 box-shadow: 0 6px 6px -6px #777;
@@ -149,7 +150,7 @@ function Admin() {
     const {loading: loadingProject, error: errorProject, data: dataProject} = useQuery(FETCH_PROJECT);
 
     if(loadingBlog || loadingProject) return <div className="spinner"><Loader type="Grid" color="#9c9c9c" height={80} width={80}/></div>
-    if(errorBlog || errorProject) return `Error! ${errorBlog.message}`;
+    if(errorBlog || errorProject) return `Error! ${errorBlog.error}`;
 
     return(
 
@@ -215,6 +216,7 @@ function Admin() {
     </div>
     :
     <Unauthorised></Unauthorised> }
+    <Footer></Footer>
     </div>
     );
 }
