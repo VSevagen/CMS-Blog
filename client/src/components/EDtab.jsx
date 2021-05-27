@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import styled from '@emotion/styled'
 import DeleteAlert from './DeleteAlert'
 import EditAlert from './EditAlert'
+import ProjectUpdateEditor from './ProjectUpdateEditor'
 
 const Tab = styled.div`
 border: 2px solid grey;
@@ -67,7 +68,8 @@ function EDtab(props) {
     <div>
         <Tab>{props.title}<EditButton onClick={handleEdit}>Edit</EditButton><DeleteButton onClick={handleClick}>Delete</DeleteButton></Tab>
         { del ? <DeleteAlert type={props.type} title={props.title} id={props.id} handler={handleIconClickDelete} ></DeleteAlert> : ""}
-        { edit ? <EditAlert id={props.id} title={props.title} desc={props.desc} text={props.text} handler={handleIconClickEdit}></EditAlert>: ""}
+        { edit && props.type=="blog" ? <EditAlert id={props.id} title={props.title} desc={props.desc} text={props.text} handler={handleIconClickEdit}></EditAlert>: ""}
+        { edit && props.type=="project" ? <ProjectUpdateEditor id={props.id} title={props.title} desc={props.desc} demolink={props.demolink} link={props.link} handler={handleIconClickEdit}></ProjectUpdateEditor>: ""}
     </div>
     );
 }

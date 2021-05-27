@@ -39,6 +39,8 @@ query projects {
         _id
         title
         desc
+        demolink
+        link
     }
 }
 `;
@@ -164,7 +166,7 @@ function Admin() {
                 ))}
             </div>
         </div>
-        {blog ? 
+        {blog ?
         <FadeIn>
             <div><h2>Create a new blog</h2></div>
 
@@ -205,7 +207,7 @@ function Admin() {
         <div>
             <Tab><SectionText>Project Section</SectionText><CreateBlog onClick={handleNewProject}>New Project</CreateBlog></Tab>
             {dataProject.projects.map(project => (
-                <EDtab title={project.title} id={project._id} desc={project.desc} type="project"></EDtab>
+                <EDtab title={project.title} id={project._id} desc={project.desc} demolink={project.demolink} link={project.link} type="project"></EDtab>
             ))}
 
             {project ? <ProjectEditor></ProjectEditor> : ""}
