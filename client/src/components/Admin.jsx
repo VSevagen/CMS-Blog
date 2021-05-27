@@ -11,6 +11,7 @@ import EDtab from './EDtab';
 import Unauthorised from './Unauthorised';
 import ProjectEditor from './ProjectEditor';
 import Footer from './Footer'
+import AboutEditor from './AboutEditor'
 
 const CREATE_NEW_BLOG = gql`
 mutation createBlog($title: String!, $description: String!, $text: String!, $date: String!) {
@@ -30,6 +31,17 @@ query blogs {
         title
         description
         text
+    }
+}
+`;
+
+const FETCH_ABOUT = gql`
+query about {
+    about {
+        _id
+        desc
+        email
+        skills
     }
 }
 `;
@@ -60,7 +72,7 @@ box-shadow: 0 6px 6px -6px #777;
 }
 `
 
-const CreateBlog = styled.button`
+const ActionButton = styled.button`
 float: right;
 color: white;
 background-color: #1f73b3;
@@ -113,6 +125,7 @@ function Admin() {
     const[date, setDate] = useState('')
     const[blog, setBlog] = useState(false);
     const[project, setProj] = useState(false);
+    const[about, setAbout] = useState(false);
 
     function handleSubmit() {
         addBlog({variables: {title: title, description: description, text: text , date: date }});
@@ -146,12 +159,18 @@ function Admin() {
         setProj(!project);
     }
 
+    function handleAboutClick() {
+        setAbout(!about);
+    }
+
     const {loading: loadingBlog, error: errorBlog, data: dataBlog} = useQuery(FETCH_BLOG);
     const {loading: loadingProject, error: errorProject, data: dataProject} = useQuery(FETCH_PROJECT);
+    const {loading: loadingAbout, error: errorAbout, data: dataAbout} = useQuery(FETCH_ABOUT);
 
-    if(loadingBlog || loadingProject) return <div className="spinner"><Loader type="Grid" color="#9c9c9c" height={80} width={80}/></div>
-    if(errorBlog || errorProject) return `Error! ${errorBlog.error}`;
+    if(loadingBlog || loadingProject || loadingAbout) return <div className="spinner"><Loader type="Grid" color="#9c9c9c" height={80} width={80}/></div>
+    if(errorBlog || errorProject || errorAbout) return `Error! ${errorBlog.error}, ${errorProject.error} , ${errorAbout.error}`;
 
+    console.log(dataAbout);
     return(
 
     <div>
@@ -159,7 +178,7 @@ function Admin() {
     <div>
         <Header LoggedIn={authenticated}/>
         <div>
-            <Tab><SectionText>Blog Section</SectionText><CreateBlog onClick={handleNewBlog}>New Blog</CreateBlog></Tab>
+            <Tab><SectionText>Blog Section</SectionText><ActionButton onClick={handleNewBlog}>New Blog</ActionButton></Tab>
 
             <div>
                 {dataBlog.blogs.map(blog => (
@@ -206,13 +225,18 @@ function Admin() {
         : ""}
 
         <div>
-            <Tab><SectionText>Project Section</SectionText><CreateBlog onClick={handleNewProject}>New Project</CreateBlog></Tab>
+            <Tab><SectionText>Project Section</SectionText><ActionButton onClick={handleNewProject}>New Project</ActionButton></Tab>
             {dataProject.projects.map(project => (
                 <EDtab title={project.title} id={project._id} desc={project.desc} demolink={project.demolink} link={project.link} type="project"></EDtab>
             ))}
 
             {project ? <ProjectEditor></ProjectEditor> : ""}
         </div>
+
+        <Tab><SectionText>About section</SectionText><ActionButton onClick={handleAboutClick}>Update About</ActionButton></Tab>
+        {about ?
+        <AboutEditor id={dataAbout.about[0]._id} desc={dataAbout.about[0].desc} email={dataAbout.about[0].email} skills={dataAbout.about[0].skills} handler={handleAboutClick}></AboutEditor>
+        : ""}
     </div>
     :
     <Unauthorised></Unauthorised> }
