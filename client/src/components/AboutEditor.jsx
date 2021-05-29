@@ -3,6 +3,7 @@ import { gql, useMutation } from "@apollo/client";
 import FadeIn from 'react-fade-in';
 import styled from '@emotion/styled';
 import { useAlert } from 'react-alert';
+import { UPDATE_ABOUT } from "../apollo/mutations"
 
 const Container = styled.div`
 margin: 2rem auto 0px;
@@ -16,17 +17,6 @@ float:right;
 opacity: 0.65;
 &:hover {
     opacity: 1;
-}
-`;
-
-const  UPDATE_ABOUT = gql`
-mutation updateAbout($id: ID!, $desc: String!, $email: String!, $skills: [String!]) {
-    updateAbout(id: $id, desc: $desc, email: $email, skills: $skills) {
-        _id
-        skills
-        desc
-        email
-    }
 }
 `;
 

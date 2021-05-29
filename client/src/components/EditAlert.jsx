@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react"
 import styled from '@emotion/styled'
 import { gql, useMutation, useQuery} from "@apollo/client";
+import { UPDATE_BLOG } from '../apollo/mutations'
 import FadeIn from 'react-fade-in';
 import { useAlert } from 'react-alert'
 import "../styles/admin.css"
@@ -13,17 +14,6 @@ opacity: 0.65;
 &:hover {
     opacity: 1;
 }
-`;
-
-const UPDATE_BLOG = gql`
-mutation updateBlog($id: ID!, $title: String!, $description: String!, $text: String!) {
-    updateBlog(id: $id, title: $title, description: $description, text: $text) {
-        _id
-        title
-        description
-        text
-    }
-  }
 `;
 
 function EditAlert(props) {

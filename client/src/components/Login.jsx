@@ -3,15 +3,7 @@ import { useHistory } from "react-router-dom";
 import { gql, useQuery } from '@apollo/client';
 import Loader from "react-loader-spinner"
 import "../styles/login.css"
-
-const LOGIN_INFO = gql`
-    query login {
-        login {
-            username
-            password
-        }
-    }
-`;
+import { LOGIN_INFO } from '../apollo/queries'
 
 function Login() {
 

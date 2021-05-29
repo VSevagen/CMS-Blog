@@ -3,21 +3,11 @@ import styled from '@emotion/styled';
 import { gql, useMutation, useQuery} from "@apollo/client";
 import { useLocation } from "react-router-dom";
 import { useAlert } from 'react-alert';
+import { CREATE_PROJECT } from '../apollo/mutations'
 
 const Container = styled.div`
 margin: 0 auto;
 width: 70%;
-`;
-
-const CREATE_PROJECT = gql`
-mutation createProject($title: String!, $desc: String!, $link: String!, $demolink: String!) {
-    createProject(projectInput: {title: $title, desc: $desc, link: $link, demolink: $demolink}) {
-        title
-        desc
-        demolink
-        link
-    }
-}
 `;
 
 function ProjectEditor() {

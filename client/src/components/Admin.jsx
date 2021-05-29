@@ -12,51 +12,8 @@ import Unauthorised from './Unauthorised';
 import ProjectEditor from './ProjectEditor';
 import Footer from './Footer'
 import AboutEditor from './AboutEditor'
-
-const CREATE_NEW_BLOG = gql`
-mutation createBlog($title: String!, $description: String!, $text: String!, $date: String!) {
-    createBlog(blogInput : {title: $title, description: $description, text: $text, date: $date}) {
-        title
-        description
-        text
-        date
-    }
-  }
-`;
-
-const FETCH_BLOG = gql`
-query blogs {
-    blogs {
-        _id
-        title
-        description
-        text
-    }
-}
-`;
-
-const FETCH_ABOUT = gql`
-query about {
-    about {
-        _id
-        desc
-        email
-        skills
-    }
-}
-`;
-
-const FETCH_PROJECT = gql`
-query projects {
-    projects {
-        _id
-        title
-        desc
-        demolink
-        link
-    }
-}
-`;
+import { FETCH_PROJECT, FETCH_BLOG, FETCH_ABOUT } from  '../apollo/queries'
+import { CREATE_NEW_BLOG } from '../apollo/mutations'
 
 const Tab = styled.div`
 border: 2px solid grey;

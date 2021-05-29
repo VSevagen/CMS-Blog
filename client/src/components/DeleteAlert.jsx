@@ -3,22 +3,7 @@ import styled from '@emotion/styled'
 import { gql, useMutation} from "@apollo/client";
 import FadeIn from 'react-fade-in';
 import { useAlert } from 'react-alert'
-
-const DELETE_BLOG = gql`
-mutation removeBlog($id: ID!) {
-    removeBlog(id: $id) {
-        _id
-    }
-}
-`;
-
-const DELETE_PROJECT = gql`
-mutation removeProject($id: ID!) {
-    removeProject(id: $id) {
-        _id
-    }
-}
-`;
+import { DELETE_BLOG, DELETE_PROJECT } from '../apollo/mutations'
 
 const Container = styled.div`
 position: relative;

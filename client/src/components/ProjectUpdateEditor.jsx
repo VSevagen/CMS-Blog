@@ -3,6 +3,7 @@ import styled from '@emotion/styled';
 import { gql, useMutation, useQuery} from "@apollo/client";
 import { useAlert } from 'react-alert';
 import FadeIn from 'react-fade-in';
+import { UPDATE_PROJECT } from '../apollo/mutations'
 
 const Container = styled.div`
 margin: 2rem auto 0px;
@@ -17,18 +18,6 @@ opacity: 0.65;
 &:hover {
     opacity: 1;
 }
-`;
-
-const UPDATE_PROJECT = gql`
-mutation updateProject($id: ID!, $title: String!, $desc: String!, $demolink: String!, $link: String!) {
-    updateProject(id: $id, title: $title, desc: $desc, demolink: $demolink, link: $link) {
-        _id
-        title
-        desc
-        demolink
-        link
-    }
-  }
 `;
 
 function ProjectUpdateEditor(props) {

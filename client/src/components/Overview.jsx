@@ -5,22 +5,11 @@ import Header from "./Header"
 import { gql, useQuery } from '@apollo/client';
 import { Link } from "react-router-dom";
 import Loader from "react-loader-spinner"
-
-const GET_BLOG_DETAILS = gql`
-    query blogs {
-        blogs {
-            title
-            description
-            date
-            text
-        }
-    }
-
-`;
+import { FETCH_BLOG } from '../apollo/queries'
 
 function Overview() {
 
-    const {loading, error, data} = useQuery(GET_BLOG_DETAILS);
+    const {loading, error, data} = useQuery(FETCH_BLOG);
     if(loading) return <div className="spinner"><Loader type="Grid" color="#9c9c9c" height={80} width={80}/></div>
     if(error) return `Error! ${error.message}`;
 

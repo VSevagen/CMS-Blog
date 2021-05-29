@@ -5,23 +5,11 @@ import Footer from "./Footer"
 import Header from "./Header"
 import { gql, useQuery } from '@apollo/client';
 import Loader from "react-loader-spinner";
-
-const GET_ABOUT_DETAILS = gql`
-    query blogs {
-        about {
-            name
-            desc
-            email
-            skills
-        }
-    }
-
-`;
-
+import { FETCH_ABOUT } from '../apollo/queries'
 
 function About()  {
 
-    const {loading, error, data} = useQuery(GET_ABOUT_DETAILS);
+    const {loading, error, data} = useQuery(FETCH_ABOUT);
     if(loading) return <div className="spinner"><Loader type="Grid" color="#9c9c9c" height={80} width={80}/></div>;
     if(error) return `Error! ${error.message}`;
 
