@@ -153,14 +153,26 @@ function Admin() {
 
     function handleNewBlog() {
         setBlog(!blog);
+
+        if(!blog) {
+            document.getElementById('blog').scrollIntoView();
+        }
     }
 
     function handleNewProject() {
         setProj(!project);
+
+        if(!project) {
+            document.getElementById('project').scrollIntoView();
+        }
     }
 
     function handleAboutClick() {
         setAbout(!about);
+
+        if(!about) {
+            document.getElementById('About').scrollIntoView();
+        }
     }
 
     const {loading: loadingBlog, error: errorBlog, data: dataBlog} = useQuery(FETCH_BLOG);
@@ -186,6 +198,8 @@ function Admin() {
                 ))}
             </div>
         </div>
+
+        <div id="blog">
         {blog ?
         <FadeIn>
             <div><h2>Create a new blog</h2></div>
@@ -223,20 +237,24 @@ function Admin() {
             </div>
         </FadeIn>
         : ""}
+        </div>
 
         <div>
             <Tab><SectionText>Project Section</SectionText><ActionButton onClick={handleNewProject}>New Project</ActionButton></Tab>
             {dataProject.projects.map(project => (
                 <EDtab title={project.title} id={project._id} desc={project.desc} demolink={project.demolink} link={project.link} type="project"></EDtab>
             ))}
-
-            {project ? <ProjectEditor></ProjectEditor> : ""}
+            <div id="project">
+                {project ? <ProjectEditor></ProjectEditor> : ""}
+            </div>
         </div>
 
         <Tab><SectionText>About section</SectionText><ActionButton onClick={handleAboutClick}>Update About</ActionButton></Tab>
+        <div id="About">
         {about ?
         <AboutEditor id={dataAbout.about[0]._id} desc={dataAbout.about[0].desc} email={dataAbout.about[0].email} skills={dataAbout.about[0].skills} handler={handleAboutClick}></AboutEditor>
         : ""}
+        </div>
     </div>
     :
     <Unauthorised></Unauthorised> }
