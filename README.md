@@ -47,7 +47,7 @@ The about page is where you can have a small write-up about yourself
 ## The Admin page
 
 ![Admin](/public/Admin.png)
-The Admin page is the where you can edit, delete or create your blogs.
+The Admin page is the where you can edit, delete or create your blogs and projects. You can edit your about page as well.
 
 ## The Login page
 
