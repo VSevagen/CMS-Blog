@@ -47,7 +47,7 @@ const verifyToken = (req, res, next) => {
 };
 verifyToken.unless = unless;
 
-app.use(verifyToken.unless({ path: ["/"] }));
+// app.use(verifyToken.unless({ path: ["/"] }));
 
 app.use(
   "/graphql",
