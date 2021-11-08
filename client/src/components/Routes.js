@@ -1,14 +1,14 @@
-import React from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Overview from "./Overview";
-import About from "./About";
-import Projects from "./Projects";
-import Admin from "./Admin";
-import BlogFormat from "./BlogFormat";
-import Login from "./Login";
-import PageNotFound from "./PageNotFound";
+import React from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import Overview from './Overview';
+import About from './About';
+import Projects from './Projects';
+import Admin from './Admin';
+import BlogFormat from './BlogFormat';
+import Login from './Login';
+import PageNotFound from './PageNotFound';
 
-function Routes() {
+function Routes () {
   return (
     <Router>
       <Switch>
@@ -34,7 +34,7 @@ function Routes() {
         <Route component={PageNotFound} />
       </Switch>
     </Router>
-  );
+  )
 }
 
-export default Routes;
+export default Routes

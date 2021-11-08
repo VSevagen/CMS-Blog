@@ -9,6 +9,7 @@
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
+    "@types/react-alert": "^5.2.1",
     "apollo-boost": "^0.4.9",
     "bootstrap": "^4.6.0",
     "browserslist": "^4.16.6",
@@ -61,5 +62,12 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@types/react-router-dom": "^5.3.2",
+    "@typescript-eslint/eslint-plugin": "^5.3.0",
+    "@typescript-eslint/parser": "^5.3.0",
+    "eslint-config-standard": "^16.0.3",
+    "typescript": "^4.4.4"
   }
 }

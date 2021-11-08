@@ -1,4 +1,4 @@
-import gql from "graphql-tag";
+import gql from 'graphql-tag';
 
 export const CREATE_NEW_BLOG = gql`
   mutation createBlog(
@@ -21,7 +21,7 @@ export const CREATE_NEW_BLOG = gql`
       date
     }
   }
-`;
+`
 
 export const CREATE_PROJECT = gql`
   mutation createProject(
@@ -44,7 +44,7 @@ export const CREATE_PROJECT = gql`
       link
     }
   }
-`;
+`
 
 export const UPDATE_BLOG = gql`
   mutation updateBlog(
@@ -60,7 +60,7 @@ export const UPDATE_BLOG = gql`
       text
     }
   }
-`;
+`
 
 export const UPDATE_ABOUT = gql`
   mutation updateAbout(
@@ -76,7 +76,7 @@ export const UPDATE_ABOUT = gql`
       email
     }
   }
-`;
+`
 
 export const UPDATE_PROJECT = gql`
   mutation updateProject(
@@ -100,7 +100,7 @@ export const UPDATE_PROJECT = gql`
       link
     }
   }
-`;
+`
 
 export const DELETE_BLOG = gql`
   mutation removeBlog($id: ID!) {
@@ -108,7 +108,7 @@ export const DELETE_BLOG = gql`
       _id
     }
   }
-`;
+`
 
 export const DELETE_PROJECT = gql`
   mutation removeProject($id: ID!) {
@@ -116,7 +116,7 @@ export const DELETE_PROJECT = gql`
       _id
     }
   }
-`;
+`
 
 export default {
   CREATE_NEW_BLOG,
@@ -125,5 +125,5 @@ export default {
   UPDATE_ABOUT,
   UPDATE_PROJECT,
   DELETE_BLOG,
-  DELETE_PROJECT,
-};
+  DELETE_PROJECT
+}
