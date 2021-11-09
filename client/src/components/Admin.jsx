@@ -79,18 +79,28 @@ function Admin() {
   const [about, setAbout] = useState(false);
 
   function handleSubmit() {
-    addBlog({
-      variables: {
-        title: title,
-        description: description,
-        text: text,
-        date: date,
-      },
-    });
-    setText("");
-    setTitle("");
-    setDate("");
-    setDesc("");
+    var Sentiment = require('sentiment');
+    var sentiment = new Sentiment();
+    var result = sentiment.analyze(text);
+    
+    if(result.comparative < 0) {
+      alert.show("Malicious text detected", {
+        type: 'error'
+      });
+    } else {
+      addBlog({
+        variables: {
+          title: title,
+          description: description,
+          text: text,
+          date: date,
+        },
+      });
+      setText("");
+      setTitle("");
+      setDate("");
+      setDesc("");
+    }
   }
 
   function handleTitle(evt) {
@@ -159,7 +169,6 @@ function Admin() {
   if (errorBlog || errorProject || errorAbout) {
    return `Error! ${errorBlog.error}, ${errorProject.error} , ${errorAbout.error}`}
 
-  console.log(dataAbout);
   return (
     <div>
       {authenticated ? (

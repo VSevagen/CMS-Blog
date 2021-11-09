@@ -36,6 +36,7 @@
     "react-scripts": "4.0.2",
     "react-scroll": "^1.8.2",
     "react-switch": "^6.0.0",
+    "sentiment": "^5.0.2",
     "use-persisted-state": "^0.3.3",
     "web-vitals": "^1.0.1"
   },

@@ -2,7 +2,6 @@ import React from 'react';
 import Header from './Header';
 import Footer from './Footer';
 import '../styles/blog.css';
-import parse from 'html-react-parser';
 
 type BlogFormatPropsType = {
   aboutProps: any;

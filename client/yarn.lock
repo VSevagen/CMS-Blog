@@ -10902,6 +10902,11 @@
     "range-parser" "~1.2.1"
     "statuses" "~1.5.0"
 
+"sentiment@^5.0.2":
+  "integrity" "sha512-ZeC3y0JsOYTdwujt5uOd7ILJNilbgFzUtg/LEG4wUv43LayFNLZ28ec8+Su+h3saHlJmIwYxBzfDHHZuiMA15g=="
+  "resolved" "https://registry.npmjs.org/sentiment/-/sentiment-5.0.2.tgz"
+  "version" "5.0.2"
+
 "serialize-javascript@^4.0.0":
   "integrity" "sha512-GaNA54380uFefWghODBWEGisLZFj00nS5ACs6yHa9nLqlLpVLO8ChDGeKRjZnV4Nh4n0Qi7nhYZD/9fCPzEqkw=="
   "resolved" "https://registry.npmjs.org/serialize-javascript/-/serialize-javascript-4.0.0.tgz"
