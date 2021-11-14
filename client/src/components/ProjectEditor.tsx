@@ -1,38 +1,32 @@
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { useAlert } from 'react-alert';
-import { UPDATE_ABOUT } from '../apollo/mutations';
-import { SideSheet, Pane, Card, TextInputField, Button} from 'evergreen-ui';
+import { CREATE_PROJECT } from '../apollo/mutations';
+import { SideSheet, Pane, Card, TextInputField, Button } from 'evergreen-ui';
 
-type AboutEditorPropsType = {
-  id: string;
-  desc: string;
-  email: string;
-  skills: any;
+type ProjectEditorTypes = {
   isShown: boolean;
   setIsShown: any;
 }
 
-const AboutEditor = ({id, desc, email, skills, isShown, setIsShown}: AboutEditorPropsType) => {
+const ProjectEditor = ({isShown, setIsShown}: ProjectEditorTypes) => {
   const alert = useAlert()
-  const [Id] = useState(id)
-  const [Desc, setDesc] = useState(desc)
-  const [Email, setEmail] = useState(email)
-  const [Skills, setSkills] = useState(skills)
-  const [updateAbout] = useMutation(UPDATE_ABOUT, {
+  const [title, setTitle] = useState('');
+  const [desc, setDesc] = useState('');
+  const [link, setLink] = useState('');
+  const [demolink, setDemo] = useState('');
+  const [createProject] = useMutation(CREATE_PROJECT, {
     onCompleted (data) {
       if (data) {
-        alert.show('About has been edited');
+        alert.show('Project created');
         window.location.reload()
       }
     }
   })
 
   function handleSubmit () {
-    const string = Skills.toString()
-    const Array = string.split(',');
-    updateAbout({
-      variables: { id: Id, desc: Desc, email: Email, skills: Array }
+    createProject({
+      variables: { title: title, desc: desc, link: link, demolink: demolink }
     })
   }
 
@@ -54,21 +48,27 @@ const AboutEditor = ({id, desc, email, skills, isShown, setIsShown}: AboutEditor
           >
             <Pane padding={16}>
             <TextInputField
-              label="Description"
-              value={Desc}
+              label="Project Title"
+              value={title}
+              onChange={(evt: any) => setTitle(evt.target.value)}
+            />
+
+            <TextInputField
+              label="Project Description"
+              value={desc}
               onChange={(evt: any) => setDesc(evt.target.value)}
             />
 
             <TextInputField
-              label="Email"
-              value={Email}
-              onChange={(evt: any) => setEmail(evt.target.value)}
+              label="Project Link"
+              value={link}
+              onChange={(evt: any) => setLink(evt.target.value)}
             />
 
             <TextInputField
-              label="Skills"
-              value={Skills}
-              onChange={(evt: any) => setSkills(evt.target.value)}
+              label="Project Demo Link"
+              value={demolink}
+              onChange={(evt: any) => setDemo(evt.target.value)}
             />
             </Pane>
 
@@ -80,4 +80,4 @@ const AboutEditor = ({id, desc, email, skills, isShown, setIsShown}: AboutEditor
   )
 }
 
-export default AboutEditor
+export default ProjectEditor

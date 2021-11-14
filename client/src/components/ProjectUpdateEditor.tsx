@@ -1,35 +1,20 @@
 import React, { useState } from 'react';
-import styled from '@emotion/styled';
-import { gql, useMutation, useQuery } from '@apollo/client';
+import { useMutation } from '@apollo/client';
 import { useAlert } from 'react-alert';
-import FadeIn from 'react-fade-in';
 import { UPDATE_PROJECT } from '../apollo/mutations';
-
-const Container = styled.div`
-  margin: 2rem auto 0px;
-  width: 90%;
-`
-
-const Icon = styled.span`
-  margin-left: auto;
-  font-size: 20px;
-  float: right;
-  opacity: 0.65;
-  &:hover {
-    opacity: 1;
-  }
-`
+import { SideSheet, Heading, Paragraph, Pane, Card, TextInputField, Button } from 'evergreen-ui';
 
 type ProjectPropsType = {
   id: string;
   title: string;
   desc: string;
-  link: string;
-  demolink: string;
-  handler: any;
+  link?: string;
+  demolink?: string;
+  isShown: boolean;
+  setIsShown: any;
 }
 
-const ProjectUpdateEditor = ({id, title, desc, link, demolink, handler}: ProjectPropsType) => {
+const ProjectUpdateEditor = ({id, title, desc, link, demolink, isShown, setIsShown}: ProjectPropsType) => {
   const alert = useAlert()
   const [Id] = useState(id)
   const [Title, setTitle] = useState(title)
@@ -45,22 +30,6 @@ const ProjectUpdateEditor = ({id, title, desc, link, demolink, handler}: Project
     }
   })
 
-  function handleTitle (evt: any) {
-    setTitle(evt.target.value)
-  }
-
-  function handleDesc (evt:  any) {
-    setDesc(evt.target.value)
-  }
-
-  function handlelink (evt: any) {
-    setLink(evt.target.value)
-  }
-
-  function handledemolink (evt: any) {
-    setDemo(evt.target.value)
-  }
-
   function handleSubmit () {
     updateProject({
       variables: {
@@ -74,72 +43,54 @@ const ProjectUpdateEditor = ({id, title, desc, link, demolink, handler}: Project
   }
 
   return (
-    <div>
-      <FadeIn>
-        <Container>
-          <h4 className="alert alert-info">
-            Edit {Title}
-            <Icon>
-              <i className="fas fa-window-close" onClick={handler}></i>
-            </Icon>
-          </h4>
-          <div className="input-group mb-3">
-            <span className="input-group-text" id="basic-addon1">
-              Project Title
-            </span>
-            <input
-              type="text"
-              className="form-control"
-              value={Title}
-              onChange={handleTitle}
-            ></input>
-          </div>
-
-          <div className="input-group mb-3">
-            <span className="input-group-text" id="basic-addon3">
-              Project link
-            </span>
-            <input
-              type="text"
-              className="form-control"
-              value={Link}
-              onChange={handlelink}
-            ></input>
-          </div>
-
-          <div className="input-group mb-3">
-            <span className="input-group-text" id="basic-addon3">
-              Project Demo link
-            </span>
-            <input
-              type="text"
-              className="form-control"
-              value={Demolink}
-              onChange={handledemolink}
-            ></input>
-          </div>
-
-          <div className="input-group mb-3">
-            <span className="input-group-text">Description</span>
-            <input
-              type="text"
-              className="form-control"
-              value={Desc}
-              onChange={handleDesc}
-            ></input>
-          </div>
-
-          <button
-            type="button"
-            id="center"
-            className="btn btn-outline-secondary"
-            onClick={handleSubmit}
+    <>
+      <SideSheet
+        isShown={isShown}
+        onCloseComplete={() => setIsShown(false)}
+        containerProps={{
+          display: 'flex',
+          flex: '1',
+          flexDirection: 'column'
+        }}
+      >
+        <Pane flex="1" overflowY="scroll" background="tint1" padding={16}>
+          <Card
+            backgroundColor="white"
+            elevation={0}
+            height={240}
           >
-            Submit
-          </button>
-        </Container>
-      </FadeIn>
-    </div>
+            <Pane padding={16}>
+            <TextInputField
+              label="Project Title"
+              value={Title}
+              onChange={(evt: any) => setTitle(evt.target.value)}
+            />
+
+            <TextInputField
+              label="Project Link"
+              value={Link}
+              onChange={(evt: any) => setLink(evt.target.value)}
+            />
+
+            <TextInputField
+              label="Project Demo Link"
+              value={Demolink}
+              onChange={(evt: any) => setDemo(evt.target.value)}
+            />
+
+            <TextInputField
+              label="Project Description"
+              value={Desc}
+              onChange={(evt: any) => setDesc(evt.target.value)}
+            />
+            </Pane>
+
+            <Button onClick={handleSubmit} appearance="primary" float="right">Submit</Button>
+          </Card>
+        </Pane>
+      </SideSheet>
+
+    </>
   )
 }
 

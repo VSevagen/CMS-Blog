@@ -4,16 +4,16 @@ import { useLocation } from "react-router-dom";
 import "../styles/admin.css";
 import styled from "@emotion/styled";
 import Header from "./Header";
-import { useAlert } from "react-alert";
 import FadeIn from "react-fade-in";
 import Loader from "react-loader-spinner";
-import EDtab from "./EDtab.tsx";
+import EDtab from "./EDtab";
 import Unauthorised from "./Unauthorised";
 import ProjectEditor from "./ProjectEditor";
 import Footer from "./Footer";
 import AboutEditor from "./AboutEditor";
 import { FETCH_PROJECT, FETCH_BLOG, FETCH_ABOUT } from "../apollo/queries";
 import { CREATE_NEW_BLOG } from "../apollo/mutations";
+import { Heading, Button, toaster } from 'evergreen-ui';
 
 const Tab = styled.div`
 border: 2px solid grey;
@@ -29,26 +29,8 @@ box-shadow: 0 6px 6px -6px #777;
 }
 `;
 
-const ActionButton = styled.button`
-  float: right;
-  color: white;
-  background-color: #1f73b3;
-  border: 0;
-  margin-left: 10px;
-  border-radius: 5px;
-  padding: 10px;
-  font-size: 15px;
-  &:hover {
-    border: 1px solid blue;
-  }
-`;
+const Admin = () => {
 
-const SectionText = styled.span`
-  font-size: 30px;
-`;
-
-function Admin() {
-  const alert = useAlert();
   const marked = require("marked");
   const location = useLocation();
   let authenticated = null;
@@ -65,7 +47,7 @@ function Admin() {
   const [addBlog] = useMutation(CREATE_NEW_BLOG, {
     onCompleted(data) {
       if (data) {
-        alert.show("Blog submitted");
+        toaster.success('Blog has been submitted');
         window.location.reload();
       }
     },
@@ -78,15 +60,17 @@ function Admin() {
   const [project, setProj] = useState(false);
   const [about, setAbout] = useState(false);
 
+  // define DOM consts
+  const blogDOM = document.getElementById("blog");
+  const projectDOM = document.getElementById("project");
+
   function handleSubmit() {
     var Sentiment = require('sentiment');
     var sentiment = new Sentiment();
     var result = sentiment.analyze(text);
-    
+
     if(result.comparative < 0) {
-      alert.show("Malicious text detected", {
-        type: 'error'
-      });
+      toaster.danger('Malicious text detected');
     } else {
       addBlog({
         variables: {
@@ -103,43 +87,19 @@ function Admin() {
     }
   }
 
-  function handleTitle(evt) {
-    setTitle(evt.target.value);
-  }
-
-  function handleDesc(evt) {
-    setDesc(evt.target.value);
-  }
-
-  function handleText(evt) {
-    setText(evt.target.value);
-  }
-
-  function handleDate(evt) {
-    setDate(evt.target.value);
-  }
-
   function handleNewBlog() {
     setBlog(!blog);
 
-    if (!blog) {
-      document.getElementById("blog").scrollIntoView();
+    if (!blog && blogDOM !== null) {
+      blogDOM.scrollIntoView();
     }
   }
 
   function handleNewProject() {
     setProj(!project);
 
-    if (!project) {
-      document.getElementById("project").scrollIntoView();
-    }
-  }
-
-  function handleAboutClick() {
-    setAbout(!about);
-
-    if (!about) {
-      document.getElementById("About").scrollIntoView();
+    if (!project && projectDOM !== null) {
+      projectDOM.scrollIntoView();
     }
   }
 
@@ -167,7 +127,7 @@ function Admin() {
   );
   }
   if (errorBlog || errorProject || errorAbout) {
-   return `Error! ${errorBlog.error}, ${errorProject.error} , ${errorAbout.error}`}
+   return `Error! ${errorBlog !== undefined && errorBlog.message}, ${errorProject !== undefined && errorProject.message} , ${errorAbout !== undefined && errorAbout.message}`}
 
   return (
     <div>
@@ -176,12 +136,12 @@ function Admin() {
           <Header LoggedIn={authenticated} />
           <div>
             <Tab>
-              <SectionText>Blog Section</SectionText>
-              <ActionButton onClick={handleNewBlog}>New Blog</ActionButton>
+              <Heading size={900} textAlign="left" display="inline-block" >Blog Section</Heading>
+              <Button appearance="primary" intent="none" float="right" height={40} onClick={handleNewBlog}>New Blog</Button>
             </Tab>
 
             <div>
-              {dataBlog.blogs.map((blog) => (
+              {dataBlog.blogs.map((blog: any) => (
                 <EDtab
                   title={blog.title}
                   id={blog._id}
@@ -210,7 +170,7 @@ function Admin() {
                       className="form-control"
                       placeholder="Ex: An Overview of India's education system"
                       value={title}
-                      onChange={handleTitle}
+                      onChange={(evt: any) => setTitle(evt.target.value)}
                     ></input>
                   </div>
 
@@ -222,7 +182,7 @@ function Admin() {
                       type="text"
                       className="form-control"
                       value={date}
-                      onChange={handleDate}
+                      onChange={(evt: any) => setDate(evt.target.value)}
                       placeholder="Ex: 22 Jun, 2019"
                     ></input>
                   </div>
@@ -234,7 +194,7 @@ function Admin() {
                       className="form-control"
                       placeholder="Ex: Let me start by saying that the current statistics are showing that the education system is outdated, inefficient and a danger to human health"
                       value={description}
-                      onChange={handleDesc}
+                      onChange={(evt: any) => setDesc(evt.target.value)}
                     ></input>
                   </div>
 
@@ -242,12 +202,12 @@ function Admin() {
                     <div className="input-group col-lg-6">
                       <span className="input-group-text">Blog Text</span>
                       <textarea
-                        rows="20"
+                        rows={20}
                         placeholder="IMPORTANT......use the following class for you text. blog_img for images and blog-content"
                         className="form-control"
                         aria-label="With textarea"
                         value={text}
-                        onChange={handleText}
+                        onChange={(evt: any) => setText(evt.target.value)}
                       ></textarea>
                     </div>
 
@@ -274,12 +234,10 @@ function Admin() {
 
           <div>
             <Tab>
-              <SectionText>Project Section</SectionText>
-              <ActionButton onClick={handleNewProject}>
-                New Project
-              </ActionButton>
+            <Heading size={900} textAlign="left" display="inline-block" >Project Section</Heading>
+              <Button appearance="primary" intent="none" float="right" height={40} onClick={handleNewProject}>New Project</Button>
             </Tab>
-            {dataProject.projects.map((project) => (
+            {dataProject.projects.map((project: any) => (
               <EDtab
                 title={project.title}
                 id={project._id}
@@ -290,26 +248,23 @@ function Admin() {
               ></EDtab>
             ))}
             <div id="project">
-              {project ? <ProjectEditor></ProjectEditor> : ""}
+               <ProjectEditor isShown={project} setIsShown={setProj} />
             </div>
           </div>
 
           <Tab>
-            <SectionText>About section</SectionText>
-            <ActionButton onClick={handleAboutClick}>Update About</ActionButton>
+              <Heading size={900} textAlign="left" display="inline-block" >About Section</Heading>
+              <Button appearance="primary" intent="none" float="right" height={40} onClick={() => setAbout(!about)}>Update About</Button>
           </Tab>
           <div id="About">
-            {about ? (
               <AboutEditor
+                isShown={about}
+                setIsShown={setAbout}
                 id={dataAbout.about[0]._id}
                 desc={dataAbout.about[0].desc}
                 email={dataAbout.about[0].email}
                 skills={dataAbout.about[0].skills}
-                handler={handleAboutClick}
               ></AboutEditor>
-                ) : (
-                  ''
-                )}
           </div>
         </div>
           ) : (
