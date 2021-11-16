@@ -1,41 +1,13 @@
 import React from 'react';
 import Error from '../public/404.svg';
-import styled from '@emotion/styled';
-
-const Img = styled.img`
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 50%;
-  padding-top: 5%;
-`;
-
-const Body = styled.div`
-  text-align: center;
-`;
-
-const Home = styled.a`
-display: block;
-margin: 50px auto;
-width: 10%;
-color: gray;
-padding-top: 0px;
-
-}
-`;
-
-const Para = styled.p`
-  padding-top: 10px;
-  height: 10px;
-`;
 
 function PageNotFound() {
   return (
-    <Body>
-      <Img src={Error} alt="404 error"></Img>
-      <Para>Seems like this path doesn't exist :(</Para>
-      <Home href="/">Go back</Home>
-    </Body>
+    <div style={{textAlign: "center"}}>
+      <img src={Error} alt="404 error" style={{display: "block", marginLeft: "auto", marginRight: "auto", width: "50%", paddingTop: "5%"}}/>
+      <p style={{paddingTop: "10px", height: "10px"}}>Seems like this path doesn't exist</p>
+      <a href="/" style={{display: "block", margin: "50px auto", width: "10%", color: "gray", paddingTop: "0px"}}>Go back</a>
+    </div>
   );
 }
 

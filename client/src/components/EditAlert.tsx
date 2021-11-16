@@ -1,20 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import styled from '@emotion/styled';
-import { gql, useMutation, useQuery } from '@apollo/client';
+import { useMutation } from '@apollo/client';
 import { UPDATE_BLOG } from '../apollo/mutations';
 import FadeIn from 'react-fade-in';
 import { useAlert } from 'react-alert';
 import '../styles/admin.css';
-
-const Icon = styled.span`
-  margin-left: auto;
-  font-size: 20px;
-  float: right;
-  opacity: 0.65;
-  &:hover {
-    opacity: 1;
-  }
-`;
 
 type EditAlertPropsType = {
   id: any;
@@ -69,9 +58,9 @@ const EditAlert = ({ id, title, desc, text, handler }: EditAlertPropsType) => {
         <div style={center}>
           <h4 className="alert alert-info">
             Edit {title}{' '}
-            <Icon>
+            <span className="icon">
               <i className="fas fa-window-close" onClick={handler}></i>
-            </Icon>
+            </span>
           </h4>
           <div className="input-group mb-3">
             <span className="input-group-text" id="basic-addon1">

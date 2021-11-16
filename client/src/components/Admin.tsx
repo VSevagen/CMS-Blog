@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import { gql, useMutation, useQuery } from '@apollo/client';
+import { useMutation, useQuery } from '@apollo/client';
 import { useLocation } from 'react-router-dom';
 import '../styles/admin.css';
-import styled from '@emotion/styled';
 import Header from './Header';
 import FadeIn from 'react-fade-in';
 import Loader from 'react-loader-spinner';
@@ -14,20 +13,6 @@ import AboutEditor from './AboutEditor';
 import { FETCH_PROJECT, FETCH_BLOG, FETCH_ABOUT } from '../apollo/queries';
 import { CREATE_NEW_BLOG } from '../apollo/mutations';
 import { Heading, Button, toaster } from 'evergreen-ui';
-
-const Tab = styled.div`
-border: 2px solid grey;
-border-radius: 5px;
-margin-top: 3rem;
-margin-bottom: 3rem;
-padding: 0.6em;
-width: 60%;
-background-color: #white;
-margin-left:20%;
-margin-right:20%;
-box-shadow: 0 6px 6px -6px #777;
-}
-`;
 
 const Admin = () => {
   const marked = require('marked');
@@ -136,9 +121,10 @@ const Admin = () => {
       {authenticated ? (
         <div>
           <Header LoggedIn={authenticated} />
-          <div>
-            <Tab>
-              <Heading size={900} textAlign="left" display="inline-block">
+          <div style={{marginTop: "3rem"}}>
+            <div className="tab">
+              <Heading size={900} textAlign="left"
+              display="inline-block">
                 Blog Section
               </Heading>
               <Button
@@ -150,7 +136,7 @@ const Admin = () => {
               >
                 New Blog
               </Button>
-            </Tab>
+            </div>
 
             <div>
               {dataBlog.blogs.map((blog: any) => (
@@ -244,8 +230,8 @@ const Admin = () => {
             )}
           </div>
 
-          <div>
-            <Tab>
+          <div style={{marginTop: "3rem"}}>
+            <div className="tab">
               <Heading size={900} textAlign="left" display="inline-block">
                 Project Section
               </Heading>
@@ -258,7 +244,7 @@ const Admin = () => {
               >
                 New Project
               </Button>
-            </Tab>
+            </div>
             {dataProject.projects.map((project: any) => (
               <EDtab
                 title={project.title}
@@ -274,7 +260,7 @@ const Admin = () => {
             </div>
           </div>
 
-          <Tab>
+          <div className="tab">
             <Heading size={900} textAlign="left" display="inline-block">
               About Section
             </Heading>
@@ -287,7 +273,7 @@ const Admin = () => {
             >
               Update About
             </Button>
-          </Tab>
+          </div>
           <div id="About">
             <AboutEditor
               isShown={about}

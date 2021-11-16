@@ -46,3 +46,27 @@ body {
   text-align: center;
   margin-bottom: 50px;
 }
+
+.tab {
+  border: 2px solid grey;
+  border-radius: 5px;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  padding: 0.6em;
+  width: 60%;
+  background-color: white;
+  margin-left:20%;
+  margin-right:20%;
+  box-shadow: 0 6px 6px -6px #777;
+}
+
+.icon {
+  margin-left: auto;
+  font-size: 20px;
+  float: right;
+  opacity: 0.65;
+}
+
+.icon:hover {
+  opacity: 1;
+}
