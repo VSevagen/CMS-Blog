@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=Raleway:400,700");
+@import url('https://fonts.googleapis.com/css?family=Raleway:400,700');
 *,
 *:before,
 *:after {
@@ -7,7 +7,7 @@
 
 body {
   min-height: 100vh;
-  font-family: "Raleway", sans-serif;
+  font-family: 'Raleway', sans-serif;
 }
 
 .container {
@@ -38,7 +38,7 @@ body {
 .top:after,
 .bottom:before,
 .bottom:after {
-  content: "";
+  content: '';
   display: block;
   position: absolute;
   width: 200vmax;
@@ -57,7 +57,7 @@ body {
   padding: 0.5rem;
   border-radius: 10px;
   color: #525252;
-  font-family: "Raleway", sans-serif;
+  font-family: 'Raleway', sans-serif;
   border: 0;
 }
 

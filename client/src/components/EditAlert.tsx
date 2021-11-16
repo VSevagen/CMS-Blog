@@ -14,7 +14,7 @@ const Icon = styled.span`
   &:hover {
     opacity: 1;
   }
-`
+`;
 
 type EditAlertPropsType = {
   id: any;
@@ -29,38 +29,38 @@ const EditAlert = ({ id, title, desc, text, handler }: EditAlertPropsType) => {
     margin: '0 auto',
     width: '90%',
     marginTop: '2rem',
-  }
+  };
   const marked = require('marked');
-  const alert = useAlert()
-  const [Id, setID] = useState(id)
-  const [Title, setTitle] = useState(title)
-  const [Description, setDesc] = useState(desc)
-  const [Text, setText] = useState(text)
+  const alert = useAlert();
+  const [Id, setID] = useState(id);
+  const [Title, setTitle] = useState(title);
+  const [Description, setDesc] = useState(desc);
+  const [Text, setText] = useState(text);
   const [updateBlog] = useMutation(UPDATE_BLOG, {
-    onCompleted (data) {
+    onCompleted(data) {
       if (data) {
         alert.show('Edit successfull !');
-        window.location.reload()
+        window.location.reload();
       }
-    }
-  })
+    },
+  });
 
-  function handleChange (evt: any) {
-    setTitle(evt.target.value)
+  function handleChange(evt: any) {
+    setTitle(evt.target.value);
   }
 
-  function handleChange2 (evt: any) {
-    setDesc(evt.target.value)
+  function handleChange2(evt: any) {
+    setDesc(evt.target.value);
   }
 
-  function handleChange3 (evt: any) {
-    setText(evt.target.value)
+  function handleChange3(evt: any) {
+    setText(evt.target.value);
   }
 
-  function handleSubmit () {
+  function handleSubmit() {
     updateBlog({
-      variables: { id: Id, title: Title, description: Description, text: Text }
-    })
+      variables: { id: Id, title: Title, description: Description, text: Text },
+    });
   }
 
   return (
@@ -124,7 +124,7 @@ const EditAlert = ({ id, title, desc, text, handler }: EditAlertPropsType) => {
         </div>
       </FadeIn>
     </div>
-  )
-}
+  );
+};
 
-export default EditAlert
+export default EditAlert;

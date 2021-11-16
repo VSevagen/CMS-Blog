@@ -6,7 +6,7 @@ import '../styles/main.css';
 
 const DARK_CLASS = 'dark';
 
-function DarkToggle () {
+function DarkToggle() {
   const useDarkState = createPersistedState('isDark');
   const systemPrefersDark = useMediaQuery(
     {
@@ -14,26 +14,26 @@ function DarkToggle () {
     },
     undefined,
     (prefersDark) => {
-      setisDark(prefersDark)
-    }
-  )
+      setisDark(prefersDark);
+    },
+  );
 
-  const [isDark, setisDark] = useDarkState(systemPrefersDark)
+  const [isDark, setisDark] = useDarkState(systemPrefersDark);
 
   useEffect(() => {
     // whatever we put here will run whenever `isDark` changes
     if (isDark) {
-      document.documentElement.classList.add(DARK_CLASS)
+      document.documentElement.classList.add(DARK_CLASS);
     } else {
-      document.documentElement.classList.remove(DARK_CLASS)
+      document.documentElement.classList.remove(DARK_CLASS);
     }
-  }, [isDark])
+  }, [isDark]);
 
-  function handleChange () {
+  function handleChange() {
     if (isDark) {
-      setisDark(false)
+      setisDark(false);
     } else {
-      setisDark(true)
+      setisDark(true);
     }
   }
 
@@ -47,7 +47,7 @@ function DarkToggle () {
       onHandleColor="#fff"
       onColor="#000"
     />
-  )
+  );
 }
 
-export default DarkToggle
+export default DarkToggle;

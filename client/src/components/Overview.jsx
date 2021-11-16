@@ -1,20 +1,20 @@
-import React from "react";
-import "../styles/main.css";
-import Footer from "./Footer";
-import Header from "./Header";
-import { gql, useQuery } from "@apollo/client";
-import { Link } from "react-router-dom";
-import Loader from "react-loader-spinner";
-import { FETCH_BLOG } from "../apollo/queries";
+import React from 'react';
+import '../styles/main.css';
+import Footer from './Footer';
+import Header from './Header';
+import { gql, useQuery } from '@apollo/client';
+import { Link } from 'react-router-dom';
+import Loader from 'react-loader-spinner';
+import { FETCH_BLOG } from '../apollo/queries';
 
 function Overview() {
   const { loading, error, data } = useQuery(FETCH_BLOG);
   if (loading) {
-   return (
+    return (
       <div className="spinner">
         <Loader type="Grid" color="#9c9c9c" height={80} width={80} />
       </div>
-  );
+    );
   }
   if (error) return `Error! ${error.message}`;
 
@@ -28,7 +28,7 @@ function Overview() {
               <Link
                 id="blog-title"
                 to={{
-                  pathname: blog.title.replace(/[\s()]+/g, ""),
+                  pathname: blog.title.replace(/[\s()]+/g, ''),
                   aboutProps: {
                     title: blog.title,
                     date: blog.date,

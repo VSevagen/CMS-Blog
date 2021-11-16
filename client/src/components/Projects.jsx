@@ -1,19 +1,19 @@
-import React from "react";
-import Footer from "./Footer";
-import "../styles/main.css";
-import Header from "./Header";
-import { gql, useQuery } from "@apollo/client";
-import Loader from "react-loader-spinner";
-import { FETCH_PROJECT } from "../apollo/queries";
+import React from 'react';
+import Footer from './Footer';
+import '../styles/main.css';
+import Header from './Header';
+import { gql, useQuery } from '@apollo/client';
+import Loader from 'react-loader-spinner';
+import { FETCH_PROJECT } from '../apollo/queries';
 
 function Projects() {
   const { loading, error, data } = useQuery(FETCH_PROJECT);
   if (loading) {
-   return (
+    return (
       <div className="spinner">
         <Loader type="Grid" color="#9c9c9c" height={80} width={80} />
       </div>
-  );
+    );
   }
   if (error) return `Error! ${error.message}`;
   return (
@@ -26,11 +26,11 @@ function Projects() {
               <h2 id="blog-title">{project.title}</h2>
               <h4>{project.desc}</h4>
               <a className="project-link" href={project.demolink}>
-                {project.demolink === "" ? "" : "Play"}
+                {project.demolink === '' ? '' : 'Play'}
               </a>
               <a id="unecessary" href="/project">
                 Had to include text because of screen-reader warning
-              </a>{" "}
+              </a>{' '}
               {/* this is just for space btw */}
               <a className="project-link" href={project.link}>
                 Link to project

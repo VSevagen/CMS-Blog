@@ -1,20 +1,20 @@
-import React from "react";
-import "../styles/about.css";
-import "../styles/main.css";
-import Footer from "./Footer";
-import Header from "./Header";
-import { gql, useQuery } from "@apollo/client";
-import Loader from "react-loader-spinner";
-import { FETCH_ABOUT } from "../apollo/queries";
+import React from 'react';
+import '../styles/about.css';
+import '../styles/main.css';
+import Footer from './Footer';
+import Header from './Header';
+import { gql, useQuery } from '@apollo/client';
+import Loader from 'react-loader-spinner';
+import { FETCH_ABOUT } from '../apollo/queries';
 
 function About() {
   const { loading, error, data } = useQuery(FETCH_ABOUT);
   if (loading) {
-   return (
+    return (
       <div className="spinner">
         <Loader type="Grid" color="#9c9c9c" height={80} width={80} />
       </div>
-  );
+    );
   }
   if (error) return `Error! ${error.message}`;
 

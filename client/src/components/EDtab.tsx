@@ -22,18 +22,37 @@ const EDtab = ({
   title,
   desc,
   demolink,
-  link
+  link,
 }: EDTabPropsType) => {
-  const [del, setDelete] = useState(false)
-  const [edit, setEdit] = useState(false)
+  const [del, setDelete] = useState(false);
+  const [edit, setEdit] = useState(false);
   const [projEdit, setProjEdit] = useState(false);
 
   return (
     <div>
       <div className="tab">
         {title}
-        <Button onClick={() => {type === 'blog' ? setEdit(true) : setProjEdit(true)}} appearance="primary" intent="none" float="right" marginLeft={10} marginTop={-3}>Edit</Button>
-        <Button onClick={() => setDelete(true)} appearance="primary" intent="danger" float="right" marginTop={-3}>Delete</Button>
+        <Button
+          onClick={() => {
+            type === 'blog' ? setEdit(true) : setProjEdit(true);
+          }}
+          appearance="primary"
+          intent="none"
+          float="right"
+          marginLeft={10}
+          marginTop={-3}
+        >
+          Edit
+        </Button>
+        <Button
+          onClick={() => setDelete(true)}
+          appearance="primary"
+          intent="danger"
+          float="right"
+          marginTop={-3}
+        >
+          Delete
+        </Button>
       </div>
       <DeleteAlert
         type={type}
@@ -43,7 +62,7 @@ const EDtab = ({
         id={id}
       ></DeleteAlert>
 
-      {edit && type == 'blog' && 
+      {edit && type == 'blog' && (
         <EditAlert
           id={id}
           title={title}
@@ -51,19 +70,19 @@ const EDtab = ({
           text={text}
           handler={() => setEdit(!edit)}
         ></EditAlert>
-      }
+      )}
 
-        <ProjectUpdateEditor
-          id={id}
-          title={title}
-          desc={desc}
-          demolink={demolink}
-          link={link}
-          isShown={projEdit}
-          setIsShown={setProjEdit}
-        ></ProjectUpdateEditor>
+      <ProjectUpdateEditor
+        id={id}
+        title={title}
+        desc={desc}
+        demolink={demolink}
+        link={link}
+        isShown={projEdit}
+        setIsShown={setProjEdit}
+      ></ProjectUpdateEditor>
     </div>
-  )
-}
+  );
+};
 
-export default EDtab
+export default EDtab;

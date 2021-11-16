@@ -1,18 +1,18 @@
-import React, { useState } from "react";
-import { gql, useMutation, useQuery } from "@apollo/client";
-import { useLocation } from "react-router-dom";
-import "../styles/admin.css";
-import styled from "@emotion/styled";
-import Header from "./Header";
-import FadeIn from "react-fade-in";
-import Loader from "react-loader-spinner";
-import EDtab from "./EDtab";
-import Unauthorised from "./Unauthorised";
-import ProjectEditor from "./ProjectEditor";
-import Footer from "./Footer";
-import AboutEditor from "./AboutEditor";
-import { FETCH_PROJECT, FETCH_BLOG, FETCH_ABOUT } from "../apollo/queries";
-import { CREATE_NEW_BLOG } from "../apollo/mutations";
+import React, { useState } from 'react';
+import { gql, useMutation, useQuery } from '@apollo/client';
+import { useLocation } from 'react-router-dom';
+import '../styles/admin.css';
+import styled from '@emotion/styled';
+import Header from './Header';
+import FadeIn from 'react-fade-in';
+import Loader from 'react-loader-spinner';
+import EDtab from './EDtab';
+import Unauthorised from './Unauthorised';
+import ProjectEditor from './ProjectEditor';
+import Footer from './Footer';
+import AboutEditor from './AboutEditor';
+import { FETCH_PROJECT, FETCH_BLOG, FETCH_ABOUT } from '../apollo/queries';
+import { CREATE_NEW_BLOG } from '../apollo/mutations';
 import { Heading, Button, toaster } from 'evergreen-ui';
 
 const Tab = styled.div`
@@ -30,8 +30,7 @@ box-shadow: 0 6px 6px -6px #777;
 `;
 
 const Admin = () => {
-
-  const marked = require("marked");
+  const marked = require('marked');
   const location = useLocation();
   let authenticated = null;
   if (location.state === undefined) {
@@ -41,8 +40,8 @@ const Admin = () => {
   }
 
   const center = {
-    margin: "0 auto",
-    width: "70%",
+    margin: '0 auto',
+    width: '70%',
   };
   const [addBlog] = useMutation(CREATE_NEW_BLOG, {
     onCompleted(data) {
@@ -52,24 +51,24 @@ const Admin = () => {
       }
     },
   });
-  const [title, setTitle] = useState("");
-  const [description, setDesc] = useState("");
-  const [text, setText] = useState("");
-  const [date, setDate] = useState("");
+  const [title, setTitle] = useState('');
+  const [description, setDesc] = useState('');
+  const [text, setText] = useState('');
+  const [date, setDate] = useState('');
   const [blog, setBlog] = useState(false);
   const [project, setProj] = useState(false);
   const [about, setAbout] = useState(false);
 
   // define DOM consts
-  const blogDOM = document.getElementById("blog");
-  const projectDOM = document.getElementById("project");
+  const blogDOM = document.getElementById('blog');
+  const projectDOM = document.getElementById('project');
 
   function handleSubmit() {
     var Sentiment = require('sentiment');
     var sentiment = new Sentiment();
     var result = sentiment.analyze(text);
 
-    if(result.comparative < 0) {
+    if (result.comparative < 0) {
       toaster.danger('Malicious text detected');
     } else {
       addBlog({
@@ -80,10 +79,10 @@ const Admin = () => {
           date: date,
         },
       });
-      setText("");
-      setTitle("");
-      setDate("");
-      setDesc("");
+      setText('');
+      setTitle('');
+      setDate('');
+      setDesc('');
     }
   }
 
@@ -120,14 +119,17 @@ const Admin = () => {
   } = useQuery(FETCH_ABOUT);
 
   if (loadingBlog || loadingProject || loadingAbout) {
-   return (
+    return (
       <div className="spinner">
         <Loader type="Grid" color="#9c9c9c" height={80} width={80} />
       </div>
-  );
+    );
   }
   if (errorBlog || errorProject || errorAbout) {
-   return `Error! ${errorBlog !== undefined && errorBlog.message}, ${errorProject !== undefined && errorProject.message} , ${errorAbout !== undefined && errorAbout.message}`}
+    return `Error! ${errorBlog !== undefined && errorBlog.message}, ${
+      errorProject !== undefined && errorProject.message
+    } , ${errorAbout !== undefined && errorAbout.message}`;
+  }
 
   return (
     <div>
@@ -136,8 +138,18 @@ const Admin = () => {
           <Header LoggedIn={authenticated} />
           <div>
             <Tab>
-              <Heading size={900} textAlign="left" display="inline-block" >Blog Section</Heading>
-              <Button appearance="primary" intent="none" float="right" height={40} onClick={handleNewBlog}>New Blog</Button>
+              <Heading size={900} textAlign="left" display="inline-block">
+                Blog Section
+              </Heading>
+              <Button
+                appearance="primary"
+                intent="none"
+                float="right"
+                height={40}
+                onClick={handleNewBlog}
+              >
+                New Blog
+              </Button>
             </Tab>
 
             <div>
@@ -227,15 +239,25 @@ const Admin = () => {
                   </button>
                 </div>
               </FadeIn>
-                ) : (
-                  ''
-                )}
+            ) : (
+              ''
+            )}
           </div>
 
           <div>
             <Tab>
-            <Heading size={900} textAlign="left" display="inline-block" >Project Section</Heading>
-              <Button appearance="primary" intent="none" float="right" height={40} onClick={handleNewProject}>New Project</Button>
+              <Heading size={900} textAlign="left" display="inline-block">
+                Project Section
+              </Heading>
+              <Button
+                appearance="primary"
+                intent="none"
+                float="right"
+                height={40}
+                onClick={handleNewProject}
+              >
+                New Project
+              </Button>
             </Tab>
             {dataProject.projects.map((project: any) => (
               <EDtab
@@ -248,31 +270,41 @@ const Admin = () => {
               ></EDtab>
             ))}
             <div id="project">
-               <ProjectEditor isShown={project} setIsShown={setProj} />
+              <ProjectEditor isShown={project} setIsShown={setProj} />
             </div>
           </div>
 
           <Tab>
-              <Heading size={900} textAlign="left" display="inline-block" >About Section</Heading>
-              <Button appearance="primary" intent="none" float="right" height={40} onClick={() => setAbout(!about)}>Update About</Button>
+            <Heading size={900} textAlign="left" display="inline-block">
+              About Section
+            </Heading>
+            <Button
+              appearance="primary"
+              intent="none"
+              float="right"
+              height={40}
+              onClick={() => setAbout(!about)}
+            >
+              Update About
+            </Button>
           </Tab>
           <div id="About">
-              <AboutEditor
-                isShown={about}
-                setIsShown={setAbout}
-                id={dataAbout.about[0]._id}
-                desc={dataAbout.about[0].desc}
-                email={dataAbout.about[0].email}
-                skills={dataAbout.about[0].skills}
-              ></AboutEditor>
+            <AboutEditor
+              isShown={about}
+              setIsShown={setAbout}
+              id={dataAbout.about[0]._id}
+              desc={dataAbout.about[0].desc}
+              email={dataAbout.about[0].email}
+              skills={dataAbout.about[0].skills}
+            ></AboutEditor>
           </div>
         </div>
-          ) : (
+      ) : (
         <Unauthorised></Unauthorised>
-          )}
+      )}
       <Footer></Footer>
     </div>
   );
-}
+};
 
 export default Admin;

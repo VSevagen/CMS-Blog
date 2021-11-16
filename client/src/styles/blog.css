@@ -1,8 +1,8 @@
-@import url("https://fonts.googleapis.com/css2?family=Amiri&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Amiri&display=swap');
 
 .blog-title {
   font-size: 36px;
-  font-family: "Vidaloka", serif;
+  font-family: 'Vidaloka', serif;
 }
 
 .blog-date {
@@ -16,7 +16,7 @@
   font-size: 1.2rem;
   /* color: #111; */
   opacity: 1;
-  font-family: "Amiri", serif;
+  font-family: 'Amiri', serif;
   margin-top: 15px;
   letter-spacing: 0;
   line-height: 25px;

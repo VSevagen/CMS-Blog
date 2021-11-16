@@ -1,10 +1,10 @@
 .tab {
-    border: 2px solid grey;
-    border-radius: 5px;
-    margin-top: 0.5rem;
-    padding: 0.6em;
-    width: 60%;
-    margin-left:20%;
-    margin-right:20%;
-    box-shadow: 0 6px 6px -6px #777;
+  border: 2px solid grey;
+  border-radius: 5px;
+  margin-top: 0.5rem;
+  padding: 0.6em;
+  width: 60%;
+  margin-left: 20%;
+  margin-right: 20%;
+  box-shadow: 0 6px 6px -6px #777;
 }

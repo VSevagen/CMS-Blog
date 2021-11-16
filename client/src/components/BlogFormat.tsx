@@ -5,26 +5,25 @@ import '../styles/blog.css';
 
 type BlogFormatPropsType = {
   aboutProps: any;
-}
+};
 
-const BlogFormat = ({aboutProps}: BlogFormatPropsType) => {
+const BlogFormat = ({ aboutProps }: BlogFormatPropsType) => {
   if (aboutProps != undefined) {
-    const title = aboutProps.title
-    const date = aboutProps.date
-    const text = aboutProps.text
-    localStorage.setItem('title', title)
-    localStorage.setItem('date', date)
-    localStorage.setItem('text', text)
+    const title = aboutProps.title;
+    const date = aboutProps.date;
+    const text = aboutProps.text;
+    localStorage.setItem('title', title);
+    localStorage.setItem('date', date);
+    localStorage.setItem('text', text);
   }
 
-  function createMarkup () {
-    let text = localStorage.getItem('text')
+  function createMarkup() {
+    let text = localStorage.getItem('text');
     if (text === null) {
-      text = "";
-    } 
+      text = '';
+    }
 
-    return { __html: text }
-    
+    return { __html: text };
   }
 
   return (
@@ -44,7 +43,7 @@ const BlogFormat = ({aboutProps}: BlogFormatPropsType) => {
       </div>
       <Footer />
     </div>
-  )
-}
+  );
+};
 
-export default BlogFormat
+export default BlogFormat;

@@ -1,23 +1,23 @@
-import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
-import { gql, useQuery } from "@apollo/client";
-import Loader from "react-loader-spinner";
-import "../styles/login.css";
-import { LOGIN_INFO } from "../apollo/queries";
+import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
+import { gql, useQuery } from '@apollo/client';
+import Loader from 'react-loader-spinner';
+import '../styles/login.css';
+import { LOGIN_INFO } from '../apollo/queries';
 
 function Login() {
-  const [user, Setuser] = useState("");
-  const [password, Setpass] = useState("");
+  const [user, Setuser] = useState('');
+  const [password, Setpass] = useState('');
   const [isCred, setCred] = useState(false);
   const history = useHistory();
 
   const { loading, error, data } = useQuery(LOGIN_INFO);
   if (loading) {
-   return (
+    return (
       <div className="spinner">
         <Loader type="Grid" color="#9c9c9c" height={80} width={80} />
       </div>
-  );
+    );
   }
   if (error) return `Error! ${error.message}`;
 
@@ -27,15 +27,15 @@ function Login() {
       password === data.login[0].password
     ) {
       history.push({
-        pathname: "/admin",
+        pathname: '/admin',
         state: { authenticated: true },
       });
     } else {
       e.preventDefault();
       setCred(true);
     }
-    Setuser("");
-    Setpass("");
+    Setuser('');
+    Setpass('');
   }
 
   function handlePass(evt) {
@@ -77,7 +77,7 @@ function Login() {
         </button>
         {isCred ? (
           <p className="errorMsg">You have entered the wrong credentials</p>
-            ) : null}
+        ) : null}
         <h2>&nbsp;</h2>
       </div>
     </div>

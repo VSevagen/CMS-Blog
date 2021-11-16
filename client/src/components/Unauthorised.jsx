@@ -4,20 +4,20 @@ import styled from '@emotion/styled';
 const Container = styled.div`
   padding-top: 10%;
   text-align: center;
-`
+`;
 
 const Title = styled.h1`
   text-align: center;
   color: #0414a7;
   margin-bottom: 50px;
-`
+`;
 
 const Background = styled.span`
   background: #aaaaaa;
   padding: 0 15px 2px 13px;
-`
+`;
 
-function Unauthorised () {
+function Unauthorised() {
   return (
     <Container>
       <Title>
@@ -28,7 +28,7 @@ function Unauthorised () {
         <a href="/login">Click here to login</a>
       </p>
     </Container>
-  )
+  );
 }
 
-export default Unauthorised
+export default Unauthorised;

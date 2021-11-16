@@ -4,9 +4,9 @@ import DarkToggle from './DarkToggle';
 
 type HeaderPropsType = {
   LoggedIn?: any;
-}
+};
 
-const Header = ({LoggedIn}: HeaderPropsType) => {
+const Header = ({ LoggedIn }: HeaderPropsType) => {
   return (
     <div>
       <div className="header">
@@ -18,11 +18,9 @@ const Header = ({LoggedIn}: HeaderPropsType) => {
           <div className="site-options">
             <Link to="/projects">Projects</Link>
             <Link to="/about">About</Link>
-            {LoggedIn
-? (
+            {LoggedIn ? (
               <Link to="/">Logout</Link>
-            )
-: (
+            ) : (
               <Link to="/login">Login</Link>
             )}
           </div>
@@ -31,7 +29,7 @@ const Header = ({LoggedIn}: HeaderPropsType) => {
 
       <div className="separator"></div>
     </div>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;

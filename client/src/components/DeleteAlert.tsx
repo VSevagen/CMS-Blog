@@ -12,39 +12,45 @@ type DeleteAlertPropsType = {
   setisShown: any;
 };
 
-const DeleteAlert = ({ id, title, type, isShown, setisShown }: DeleteAlertPropsType) => {
-  const alert = useAlert()
+const DeleteAlert = ({
+  id,
+  title,
+  type,
+  isShown,
+  setisShown,
+}: DeleteAlertPropsType) => {
+  const alert = useAlert();
   const [Title, setTitle] = useState('');
-  const [value, setValue] = useState(type)
+  const [value, setValue] = useState(type);
   const [deleteBlog] = useMutation(DELETE_BLOG, {
     onCompleted(data) {
       if (data) {
         alert.show('Blog deleted');
-        window.location.reload()
+        window.location.reload();
       }
-    }
-  })
+    },
+  });
 
   const [deleteProject] = useMutation(DELETE_PROJECT, {
     onCompleted(data) {
       if (data) {
         alert.show('Project deleted');
-        window.location.reload()
+        window.location.reload();
       }
-    }
-  })
+    },
+  });
 
   function handleSubmit() {
     if (value == 'project') {
-      deleteProject({ variables: { id: id } })
+      deleteProject({ variables: { id: id } });
     }
     if (value == 'blog') {
-      deleteBlog({ variables: { id: id } })
+      deleteBlog({ variables: { id: id } });
     }
   }
 
   function handleChange(evt: any) {
-    setTitle(evt.target.value)
+    setTitle(evt.target.value);
   }
 
   return (
@@ -56,14 +62,17 @@ const DeleteAlert = ({ id, title, type, isShown, setisShown }: DeleteAlertPropsT
         confirmLabel="Delete"
         intent="danger"
         isConfirmDisabled={Title != title}
-        onConfirm={handleSubmit}>
-          This action <strong>cannot</strong> be undone. This will permanently delete the blog <strong>{title}</strong>.
-
-          <p className="pl-0">Please type <strong>{title}</strong> to confirm</p>
-          <TextInput onChange={handleChange} value={Title}  />
+        onConfirm={handleSubmit}
+      >
+        This action <strong>cannot</strong> be undone. This will permanently
+        delete the blog <strong>{title}</strong>.
+        <p className="pl-0">
+          Please type <strong>{title}</strong> to confirm
+        </p>
+        <TextInput onChange={handleChange} value={Title} />
       </Dialog>
     </Pane>
-  )
-}
+  );
+};
 
-export default DeleteAlert
+export default DeleteAlert;

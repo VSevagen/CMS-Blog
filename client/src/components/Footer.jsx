@@ -4,7 +4,7 @@ import Twitter from '../public/twitter.png';
 import Linkedin from '../public/linkedin.png';
 import Github from '../public/github.svg';
 
-export default function Footer () {
+export default function Footer() {
   return (
     <div>
       <div className="bottom-separator"></div>
@@ -39,5 +39,5 @@ export default function Footer () {
         </div>
       </div>
     </div>
-  )
+  );
 }

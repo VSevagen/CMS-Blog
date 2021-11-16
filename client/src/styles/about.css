@@ -1,7 +1,7 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono&family=Vidaloka&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&family=Vidaloka&display=swap');
 
 p {
-  font-family: "Roboto Mono", monospace;
+  font-family: 'Roboto Mono', monospace;
   letter-spacing: -1px;
   padding-left: 15px;
   padding-right: 15px;

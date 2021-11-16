@@ -8,7 +8,7 @@ import BlogFormat from './BlogFormat';
 import Login from './Login';
 import PageNotFound from './PageNotFound';
 
-function Routes () {
+function Routes() {
   return (
     <Router>
       <Switch>
@@ -34,7 +34,7 @@ function Routes () {
         <Route component={PageNotFound} />
       </Switch>
     </Router>
-  )
+  );
 }
 
-export default Routes
+export default Routes;

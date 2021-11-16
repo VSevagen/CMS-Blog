@@ -10,7 +10,7 @@ export const FETCH_BLOG = gql`
       date
     }
   }
-`
+`;
 
 export const FETCH_PROJECT = gql`
   query projects {
@@ -22,7 +22,7 @@ export const FETCH_PROJECT = gql`
       link
     }
   }
-`
+`;
 
 export const FETCH_ABOUT = gql`
   query about {
@@ -34,7 +34,7 @@ export const FETCH_ABOUT = gql`
       skills
     }
   }
-`
+`;
 
 export const LOGIN_INFO = gql`
   query login {
@@ -43,11 +43,11 @@ export const LOGIN_INFO = gql`
       password
     }
   }
-`
+`;
 
 export default {
   FETCH_PROJECT,
   FETCH_BLOG,
   FETCH_ABOUT,
-  LOGIN_INFO
-}
+  LOGIN_INFO,
+};
