@@ -121,10 +121,9 @@ const Admin = () => {
       {authenticated ? (
         <div>
           <Header LoggedIn={authenticated} />
-          <div style={{marginTop: "3rem"}}>
+          <div style={{ marginTop: '3rem' }}>
             <div className="tab">
-              <Heading size={900} textAlign="left"
-              display="inline-block">
+              <Heading size={900} textAlign="left" display="inline-block">
                 Blog Section
               </Heading>
               <Button
@@ -230,7 +229,7 @@ const Admin = () => {
             )}
           </div>
 
-          <div style={{marginTop: "3rem"}}>
+          <div style={{ marginTop: '3rem' }}>
             <div className="tab">
               <Heading size={900} textAlign="left" display="inline-block">
                 Project Section
